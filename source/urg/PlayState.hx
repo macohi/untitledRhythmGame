@@ -51,19 +51,22 @@ class PlayState extends MusicBeatState
 		add(notes);
 
 		notes.strumNote = strumNote;
-		notes.debugMode = debugMode;
 		notes.song = SONG;
 
-		notes.ghostNoteHit.add(function() {
+		notes.ghostNoteHit.add(function()
+		{
 			trace('ghost');
 		});
-		notes.badNoteHit.add(function() {
+		notes.badNoteHit.add(function()
+		{
 			trace('bad');
 		});
-		notes.missNote.add(function() {
+		notes.missNote.add(function()
+		{
 			trace('miss');
 		});
-		notes.goodNoteHit.add(function() {
+		notes.goodNoteHit.add(function()
+		{
 			trace('good');
 		});
 
@@ -89,8 +92,6 @@ class PlayState extends MusicBeatState
 
 	override public function update(elapsed:Float)
 	{
-		super.update(elapsed);
-
 		if (!songStarted)
 			return;
 
@@ -99,6 +100,8 @@ class PlayState extends MusicBeatState
 			songStarted = false;
 			return;
 		}
+		
+		super.update(elapsed);
 
 		Conductor.songPosition = SONG.inst.time;
 
@@ -111,6 +114,7 @@ class PlayState extends MusicBeatState
 		{
 			debugModeFunctions();
 		}
+		notes.debugMode = !SONG.inst.playing;
 		notes.curStep = curStep;
 	}
 
