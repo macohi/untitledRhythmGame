@@ -6,344 +6,208 @@
 			"notes": ["Seconds: 0"]
 		},
 		{
-			"ms": 100,
-			"notes": ["Seconds: 0.1"]
+			"ms": 66,
+			"notes": ["Seconds: 0.066"]
 		},
 		{
-			"ms": 226,
-			"notes": ["Seconds: 0.226"]
+			"ms": 262,
+			"notes": ["Seconds: 0.262"]
 		},
 		{
-			"ms": 328,
-			"notes": ["Seconds: 0.328"]
+			"ms": 526,
+			"notes": ["Seconds: 0.526"]
 		},
 		{
-			"ms": 446,
-			"notes": ["Seconds: 0.446"]
+			"ms": 766,
+			"notes": ["Seconds: 0.766"]
 		},
 		{
-			"ms": 736,
-			"notes": ["Seconds: 0.736"]
+			"ms": 1054,
+			"notes": ["Seconds: 1.054"]
 		},
 		{
-			"ms": 1064,
-			"notes": ["Seconds: 1.064"]
+			"ms": 1342,
+			"notes": ["Seconds: 1.342"]
 		},
 		{
-			"ms": 1168,
-			"notes": ["Seconds: 1.168"]
+			"ms": 1614,
+			"notes": ["Seconds: 1.614"]
 		},
 		{
-			"ms": 1624,
-			"notes": ["Seconds: 1.624"]
+			"ms": 1870,
+			"notes": ["Seconds: 1.87"]
 		},
 		{
-			"ms": 1696,
-			"notes": ["Seconds: 1.696"]
+			"ms": 2086,
+			"notes": ["Seconds: 2.086"]
 		},
 		{
-			"ms": 1776,
-			"notes": ["Seconds: 1.776"]
+			"ms": 2294,
+			"notes": ["Seconds: 2.294"]
 		},
 		{
-			"ms": 1856,
-			"notes": ["Seconds: 1.856"]
+			"ms": 2478,
+			"notes": ["Seconds: 2.478"]
 		},
 		{
-			"ms": 1928,
-			"notes": ["Seconds: 1.928"]
+			"ms": 2614,
+			"notes": ["Seconds: 2.614"]
 		},
 		{
-			"ms": 2008,
-			"notes": ["Seconds: 2.008"]
+			"ms": 2734,
+			"notes": ["Seconds: 2.734"]
 		},
 		{
-			"ms": 2072,
-			"notes": ["Seconds: 2.072"]
+			"ms": 2862,
+			"notes": ["Seconds: 2.862"]
 		},
 		{
-			"ms": 2504,
-			"notes": ["Seconds: 2.504"]
+			"ms": 2950,
+			"notes": ["Seconds: 2.95"]
 		},
 		{
-			"ms": 2936,
-			"notes": ["Seconds: 2.936"]
+			"ms": 3054,
+			"notes": ["Seconds: 3.054"]
 		},
 		{
-			"ms": 3384,
-			"notes": ["Seconds: 3.384"]
+			"ms": 3142,
+			"notes": ["Seconds: 3.142"]
 		},
 		{
-			"ms": 3816,
-			"notes": ["Seconds: 3.816"]
+			"ms": 3230,
+			"notes": ["Seconds: 3.23"]
 		},
 		{
-			"ms": 4088,
-			"notes": ["Seconds: 4.088"]
+			"ms": 3318,
+			"notes": ["Seconds: 3.318"]
 		},
 		{
-			"ms": 4544,
-			"notes": ["Seconds: 4.544"]
+			"ms": 3406,
+			"notes": ["Seconds: 3.406"]
 		},
 		{
-			"ms": 4840,
-			"notes": ["Seconds: 4.84"]
+			"ms": 3566,
+			"notes": ["Seconds: 3.566"]
 		},
 		{
-			"ms": 4928,
-			"notes": ["Seconds: 4.928"]
+			"ms": 3654,
+			"notes": ["Seconds: 3.654"]
 		},
 		{
-			"ms": 5264,
-			"notes": ["Seconds: 5.264"]
+			"ms": 3790,
+			"notes": ["Seconds: 3.79"]
 		},
 		{
-			"ms": 5448,
-			"notes": ["Seconds: 5.448"]
+			"ms": 3886,
+			"notes": ["Seconds: 3.886"]
 		},
 		{
-			"ms": 5632,
-			"notes": ["Seconds: 5.632"]
+			"ms": 3998,
+			"notes": ["Seconds: 3.998"]
 		},
 		{
-			"ms": 5784,
-			"notes": ["Seconds: 5.784"]
+			"ms": 4102,
+			"notes": ["Seconds: 4.102"]
 		},
 		{
-			"ms": 5872,
-			"notes": ["Seconds: 5.872"]
+			"ms": 4206,
+			"notes": ["Seconds: 4.206"]
 		},
 		{
-			"ms": 5968,
-			"notes": ["Seconds: 5.968"]
+			"ms": 4374,
+			"notes": ["Seconds: 4.374"]
 		},
 		{
-			"ms": 6056,
-			"notes": ["Seconds: 6.056"]
+			"ms": 4438,
+			"notes": ["Seconds: 4.438"]
 		},
 		{
-			"ms": 6144,
-			"notes": ["Seconds: 6.144"]
+			"ms": 4502,
+			"notes": ["Seconds: 4.502"]
 		},
 		{
-			"ms": 6232,
-			"notes": ["Seconds: 6.232"]
+			"ms": 4590,
+			"notes": ["Seconds: 4.59"]
 		},
 		{
-			"ms": 6320,
-			"notes": ["Seconds: 6.32"]
+			"ms": 4654,
+			"notes": ["Seconds: 4.654"]
 		},
 		{
-			"ms": 6400,
-			"notes": ["Seconds: 6.4"]
+			"ms": 4758,
+			"notes": ["Seconds: 4.758"]
 		},
 		{
-			"ms": 6504,
-			"notes": ["Seconds: 6.504"]
+			"ms": 4830,
+			"notes": ["Seconds: 4.83"]
 		},
 		{
-			"ms": 6584,
-			"notes": ["Seconds: 6.584"]
+			"ms": 4942,
+			"notes": ["Seconds: 4.942"]
 		},
 		{
-			"ms": 7384,
-			"notes": ["Seconds: 7.384"]
+			"ms": 5046,
+			"notes": ["Seconds: 5.046"]
 		},
 		{
-			"ms": 7544,
-			"notes": ["Seconds: 7.544"]
+			"ms": 5150,
+			"notes": ["Seconds: 5.15"]
 		},
 		{
-			"ms": 7696,
-			"notes": ["Seconds: 7.696"]
+			"ms": 5254,
+			"notes": ["Seconds: 5.254"]
 		},
 		{
-			"ms": 7776,
-			"notes": ["Seconds: 7.776"]
+			"ms": 5318,
+			"notes": ["Seconds: 5.318"]
 		},
 		{
-			"ms": 7864,
-			"notes": ["Seconds: 7.864"]
+			"ms": 5430,
+			"notes": ["Seconds: 5.43"]
 		},
 		{
-			"ms": 7944,
-			"notes": ["Seconds: 7.944"]
+			"ms": 5526,
+			"notes": ["Seconds: 5.526"]
 		},
 		{
-			"ms": 8000,
-			"notes": ["Seconds: 8"]
+			"ms": 5630,
+			"notes": ["Seconds: 5.63"]
 		},
 		{
-			"ms": 8000,
-			"notes": ["Seconds: 8"]
+			"ms": 5694,
+			"notes": ["Seconds: 5.694"]
 		},
 		{
-			"ms": 8048,
-			"notes": ["Seconds: 8.048"]
+			"ms": 5758,
+			"notes": ["Seconds: 5.758"]
 		},
 		{
-			"ms": 8200,
-			"notes": ["Seconds: 8.2"]
+			"ms": 5878,
+			"notes": ["Seconds: 5.878"]
 		},
 		{
-			"ms": 8376,
-			"notes": ["Seconds: 8.376"]
+			"ms": 5982,
+			"notes": ["Seconds: 5.982"]
 		},
 		{
-			"ms": 8432,
-			"notes": ["Seconds: 8.432"]
+			"ms": 6046,
+			"notes": ["Seconds: 6.046"]
 		},
 		{
-			"ms": 8376,
-			"notes": ["Seconds: 8.376"]
+			"ms": 6166,
+			"notes": ["Seconds: 6.166"]
 		},
 		{
-			"ms": 8320,
-			"notes": ["Seconds: 8.32"]
+			"ms": 6230,
+			"notes": ["Seconds: 6.23"]
 		},
 		{
-			"ms": 8224,
-			"notes": ["Seconds: 8.224"]
+			"ms": 6294,
+			"notes": ["Seconds: 6.294"]
 		},
 		{
-			"ms": 8120,
-			"notes": ["Seconds: 8.12"]
-		},
-		{
-			"ms": 8048,
-			"notes": ["Seconds: 8.048"]
-		},
-		{
-			"ms": 7960,
-			"notes": ["Seconds: 7.96"]
-		},
-		{
-			"ms": 7864,
-			"notes": ["Seconds: 7.864"]
-		},
-		{
-			"ms": 7768,
-			"notes": ["Seconds: 7.768"]
-		},
-		{
-			"ms": 7664,
-			"notes": ["Seconds: 7.664"]
-		},
-		{
-			"ms": 7616,
-			"notes": ["Seconds: 7.616"]
-		},
-		{
-			"ms": 7512,
-			"notes": ["Seconds: 7.512"]
-		},
-		{
-			"ms": 7184,
-			"notes": ["Seconds: 7.184"]
-		},
-		{
-			"ms": 7104,
-			"notes": ["Seconds: 7.104"]
-		},
-		{
-			"ms": 7000,
-			"notes": ["Seconds: 7"]
-		},
-		{
-			"ms": 6944,
-			"notes": ["Seconds: 6.944"]
-		},
-		{
-			"ms": 6896,
-			"notes": ["Seconds: 6.896"]
-		},
-		{
-			"ms": 6840,
-			"notes": ["Seconds: 6.84"]
-		},
-		{
-			"ms": 6424,
-			"notes": ["Seconds: 6.424"]
-		},
-		{
-			"ms": 6352,
-			"notes": ["Seconds: 6.352"]
-		},
-		{
-			"ms": 6296,
-			"notes": ["Seconds: 6.296"]
-		},
-		{
-			"ms": 6240,
-			"notes": ["Seconds: 6.24"]
-		},
-		{
-			"ms": 6136,
-			"notes": ["Seconds: 6.136"]
-		},
-		{
-			"ms": 5544,
-			"notes": ["Seconds: 5.544"]
-		},
-		{
-			"ms": 5456,
-			"notes": ["Seconds: 5.456"]
-		},
-		{
-			"ms": 5216,
-			"notes": ["Seconds: 5.216"]
-		},
-		{
-			"ms": 4984,
-			"notes": ["Seconds: 4.984"]
-		},
-		{
-			"ms": 4936,
-			"notes": ["Seconds: 4.936"]
-		},
-		{
-			"ms": 4856,
-			"notes": ["Seconds: 4.856"]
-		},
-		{
-			"ms": 4120,
-			"notes": ["Seconds: 4.12"]
-		},
-		{
-			"ms": 3928,
-			"notes": ["Seconds: 3.928"]
-		},
-		{
-			"ms": 3616,
-			"notes": ["Seconds: 3.616"]
-		},
-		{
-			"ms": 3232,
-			"notes": ["Seconds: 3.232"]
-		},
-		{
-			"ms": 2832,
-			"notes": ["Seconds: 2.832"]
-		},
-		{
-			"ms": 2320,
-			"notes": ["Seconds: 2.32"]
-		},
-		{
-			"ms": 1424,
-			"notes": ["Seconds: 1.424"]
-		},
-		{
-			"ms": 1232,
-			"notes": ["Seconds: 1.232"]
-		},
-		{
-			"ms": 920,
-			"notes": ["Seconds: 0.92"]
-		},
-		{
-			"ms": 592,
-			"notes": ["Seconds: 0.592"]
+			"ms": 6414,
+			"notes": ["Seconds: 6.414"]
 		}
 	],
 	"timeformat": "ms"

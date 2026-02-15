@@ -5,6 +5,8 @@ import haxe.Json;
 import macohi.funkin.koya.backend.AssetPaths;
 import macohi.funkin.koya.backend.KoyaAssets;
 
+using macohi.funkin.vslice.util.AnsiUtil;
+
 class Song
 {
 	public static function loadSong(song:String):SongData
@@ -34,6 +36,8 @@ class Song
 
 			if (jsonData != null)
 				songData = jsonData;
+		} else {
+			trace(' WARNING '.warning() + ' Missing song JSON: ${song.toLowerCase()}');
 		}
 
 		return songData;
