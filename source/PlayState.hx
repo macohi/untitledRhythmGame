@@ -4,6 +4,8 @@ import macohi.funkin.pre_vslice.MusicBeatState;
 
 class PlayState extends MusicBeatState
 {
+	public var debugMode:Bool = true;
+
 	override public function create()
 	{
 		FlxG.sound.play(AssetPaths.music('StereoMadness'));
