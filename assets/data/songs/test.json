@@ -1,11 +1,70 @@
 {
 	"bpm": 100,
 	"notes": [
-		{ "ms": 1859, "notes": ["Seconds: 1.859"] },
-		{ "ms": 2220, "notes": ["Seconds: 2.22"] },
-		{ "ms": 2600, "notes": ["Seconds: 2.6"] },
-		{ "ms": 2900, "notes": ["Seconds: 2.9"] },
-		{ "ms": 3219, "notes": ["Seconds: 3.219"] }
+		{
+			"beat": 9,
+			"step": 39
+		},
+		{
+			"beat": 10,
+			"step": 41
+		},
+		{
+			"beat": 10,
+			"step": 43
+		},
+		{
+			"beat": 11,
+			"step": 45
+		},
+		{
+			"beat": 11,
+			"step": 47
+		},
+		{
+			"beat": 12,
+			"step": 49
+		},
+		{
+			"beat": 12,
+			"step": 51
+		},
+		{
+			"beat": 13,
+			"step": 52
+		},
+		{
+			"beat": 13,
+			"step": 54
+		},
+		{
+			"beat": 14,
+			"step": 56
+		},
+		{
+			"beat": 14,
+			"step": 58
+		},
+		{
+			"beat": 15,
+			"step": 60
+		},
+		{
+			"beat": 15,
+			"step": 61
+		},
+		{
+			"beat": 15,
+			"step": 63
+		},
+		{
+			"beat": 16,
+			"step": 65
+		},
+		{
+			"beat": 16,
+			"step": 67
+		}
 	],
-	"timeformat": "ms"
+	"timeformat": "beats_and_steps"
 }

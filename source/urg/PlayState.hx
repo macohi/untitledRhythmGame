@@ -1,5 +1,6 @@
 package urg;
 
+import lime.system.Clipboard;
 import haxe.Json;
 import flixel.tweens.FlxEase;
 import flixel.tweens.FlxTween;
@@ -40,7 +41,10 @@ class PlayState extends MusicBeatState
 		#if hscript
 		ConsoleUtil.registerObject('SONG', SONG);
 		ConsoleUtil.registerFunction('traceSONG', function() {
-			trace(Json.stringify(SONG, '\t'));
+			trace(Json.stringify(SONG));
+		});
+		ConsoleUtil.registerFunction('copySONG', function() {
+			Clipboard.text = Json.stringify(SONG, '\t');
 		});
 		#end
 		#end
