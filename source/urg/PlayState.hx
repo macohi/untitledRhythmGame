@@ -290,7 +290,7 @@ class PlayState extends MusicBeatState
 					if (noteData.ms - note.data.ms < msDiff)
 					{
 						canAdd = false;
-						trace('Overlapping with a note. (${noteData.ms - note.data.ms} < $msDiff)');
+						trace('Overlapping with a note. (${noteData.ms - note.data.ms}ms < ${msDiff}ms)');
 					}
 				}
 			}
