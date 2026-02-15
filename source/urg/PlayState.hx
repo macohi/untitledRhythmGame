@@ -48,7 +48,7 @@ class PlayState extends MusicBeatState
 
 		notes.strumNote = strumNote;
 		notes.debugMode = debugMode;
-		notes.songData = SONG.data;
+		notes.song = SONG;
 
 		notes.loadNotes();
 		updateDownscrollValues();

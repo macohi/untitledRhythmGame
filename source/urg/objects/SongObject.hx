@@ -1,5 +1,6 @@
 package urg.objects;
 
+import flixel.FlxG;
 import flixel.sound.FlxSound;
 import flixel.system.debug.console.ConsoleUtil;
 import haxe.Json;
@@ -41,6 +42,8 @@ class SongObject
 
 		inst = new FlxSound().loadEmbedded(AssetPaths.music('songs/$song'));
 		inst.play(true);
+
+		FlxG.sound.list.add(inst);
 
 		if (this.debugMode)
 		{
