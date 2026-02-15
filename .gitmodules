@@ -1,0 +1,3 @@
+[submodule "source/macohi"]
+	path = source/macohi
+	url = https://github.com/sphis-sinco/macohi
