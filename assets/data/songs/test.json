@@ -2,69 +2,349 @@
 	"bpm": 100,
 	"notes": [
 		{
-			"beat": 9,
-			"step": 39
+			"ms": 0,
+			"notes": ["Seconds: 0"]
 		},
 		{
-			"beat": 10,
-			"step": 41
+			"ms": 100,
+			"notes": ["Seconds: 0.1"]
 		},
 		{
-			"beat": 10,
-			"step": 43
+			"ms": 226,
+			"notes": ["Seconds: 0.226"]
 		},
 		{
-			"beat": 11,
-			"step": 45
+			"ms": 328,
+			"notes": ["Seconds: 0.328"]
 		},
 		{
-			"beat": 11,
-			"step": 47
+			"ms": 446,
+			"notes": ["Seconds: 0.446"]
 		},
 		{
-			"beat": 12,
-			"step": 49
+			"ms": 736,
+			"notes": ["Seconds: 0.736"]
 		},
 		{
-			"beat": 12,
-			"step": 51
+			"ms": 1064,
+			"notes": ["Seconds: 1.064"]
 		},
 		{
-			"beat": 13,
-			"step": 52
+			"ms": 1168,
+			"notes": ["Seconds: 1.168"]
 		},
 		{
-			"beat": 13,
-			"step": 54
+			"ms": 1624,
+			"notes": ["Seconds: 1.624"]
 		},
 		{
-			"beat": 14,
-			"step": 56
+			"ms": 1696,
+			"notes": ["Seconds: 1.696"]
 		},
 		{
-			"beat": 14,
-			"step": 58
+			"ms": 1776,
+			"notes": ["Seconds: 1.776"]
 		},
 		{
-			"beat": 15,
-			"step": 60
+			"ms": 1856,
+			"notes": ["Seconds: 1.856"]
 		},
 		{
-			"beat": 15,
-			"step": 61
+			"ms": 1928,
+			"notes": ["Seconds: 1.928"]
 		},
 		{
-			"beat": 15,
-			"step": 63
+			"ms": 2008,
+			"notes": ["Seconds: 2.008"]
 		},
 		{
-			"beat": 16,
-			"step": 65
+			"ms": 2072,
+			"notes": ["Seconds: 2.072"]
 		},
 		{
-			"beat": 16,
-			"step": 67
+			"ms": 2504,
+			"notes": ["Seconds: 2.504"]
+		},
+		{
+			"ms": 2936,
+			"notes": ["Seconds: 2.936"]
+		},
+		{
+			"ms": 3384,
+			"notes": ["Seconds: 3.384"]
+		},
+		{
+			"ms": 3816,
+			"notes": ["Seconds: 3.816"]
+		},
+		{
+			"ms": 4088,
+			"notes": ["Seconds: 4.088"]
+		},
+		{
+			"ms": 4544,
+			"notes": ["Seconds: 4.544"]
+		},
+		{
+			"ms": 4840,
+			"notes": ["Seconds: 4.84"]
+		},
+		{
+			"ms": 4928,
+			"notes": ["Seconds: 4.928"]
+		},
+		{
+			"ms": 5264,
+			"notes": ["Seconds: 5.264"]
+		},
+		{
+			"ms": 5448,
+			"notes": ["Seconds: 5.448"]
+		},
+		{
+			"ms": 5632,
+			"notes": ["Seconds: 5.632"]
+		},
+		{
+			"ms": 5784,
+			"notes": ["Seconds: 5.784"]
+		},
+		{
+			"ms": 5872,
+			"notes": ["Seconds: 5.872"]
+		},
+		{
+			"ms": 5968,
+			"notes": ["Seconds: 5.968"]
+		},
+		{
+			"ms": 6056,
+			"notes": ["Seconds: 6.056"]
+		},
+		{
+			"ms": 6144,
+			"notes": ["Seconds: 6.144"]
+		},
+		{
+			"ms": 6232,
+			"notes": ["Seconds: 6.232"]
+		},
+		{
+			"ms": 6320,
+			"notes": ["Seconds: 6.32"]
+		},
+		{
+			"ms": 6400,
+			"notes": ["Seconds: 6.4"]
+		},
+		{
+			"ms": 6504,
+			"notes": ["Seconds: 6.504"]
+		},
+		{
+			"ms": 6584,
+			"notes": ["Seconds: 6.584"]
+		},
+		{
+			"ms": 7384,
+			"notes": ["Seconds: 7.384"]
+		},
+		{
+			"ms": 7544,
+			"notes": ["Seconds: 7.544"]
+		},
+		{
+			"ms": 7696,
+			"notes": ["Seconds: 7.696"]
+		},
+		{
+			"ms": 7776,
+			"notes": ["Seconds: 7.776"]
+		},
+		{
+			"ms": 7864,
+			"notes": ["Seconds: 7.864"]
+		},
+		{
+			"ms": 7944,
+			"notes": ["Seconds: 7.944"]
+		},
+		{
+			"ms": 8000,
+			"notes": ["Seconds: 8"]
+		},
+		{
+			"ms": 8000,
+			"notes": ["Seconds: 8"]
+		},
+		{
+			"ms": 8048,
+			"notes": ["Seconds: 8.048"]
+		},
+		{
+			"ms": 8200,
+			"notes": ["Seconds: 8.2"]
+		},
+		{
+			"ms": 8376,
+			"notes": ["Seconds: 8.376"]
+		},
+		{
+			"ms": 8432,
+			"notes": ["Seconds: 8.432"]
+		},
+		{
+			"ms": 8376,
+			"notes": ["Seconds: 8.376"]
+		},
+		{
+			"ms": 8320,
+			"notes": ["Seconds: 8.32"]
+		},
+		{
+			"ms": 8224,
+			"notes": ["Seconds: 8.224"]
+		},
+		{
+			"ms": 8120,
+			"notes": ["Seconds: 8.12"]
+		},
+		{
+			"ms": 8048,
+			"notes": ["Seconds: 8.048"]
+		},
+		{
+			"ms": 7960,
+			"notes": ["Seconds: 7.96"]
+		},
+		{
+			"ms": 7864,
+			"notes": ["Seconds: 7.864"]
+		},
+		{
+			"ms": 7768,
+			"notes": ["Seconds: 7.768"]
+		},
+		{
+			"ms": 7664,
+			"notes": ["Seconds: 7.664"]
+		},
+		{
+			"ms": 7616,
+			"notes": ["Seconds: 7.616"]
+		},
+		{
+			"ms": 7512,
+			"notes": ["Seconds: 7.512"]
+		},
+		{
+			"ms": 7184,
+			"notes": ["Seconds: 7.184"]
+		},
+		{
+			"ms": 7104,
+			"notes": ["Seconds: 7.104"]
+		},
+		{
+			"ms": 7000,
+			"notes": ["Seconds: 7"]
+		},
+		{
+			"ms": 6944,
+			"notes": ["Seconds: 6.944"]
+		},
+		{
+			"ms": 6896,
+			"notes": ["Seconds: 6.896"]
+		},
+		{
+			"ms": 6840,
+			"notes": ["Seconds: 6.84"]
+		},
+		{
+			"ms": 6424,
+			"notes": ["Seconds: 6.424"]
+		},
+		{
+			"ms": 6352,
+			"notes": ["Seconds: 6.352"]
+		},
+		{
+			"ms": 6296,
+			"notes": ["Seconds: 6.296"]
+		},
+		{
+			"ms": 6240,
+			"notes": ["Seconds: 6.24"]
+		},
+		{
+			"ms": 6136,
+			"notes": ["Seconds: 6.136"]
+		},
+		{
+			"ms": 5544,
+			"notes": ["Seconds: 5.544"]
+		},
+		{
+			"ms": 5456,
+			"notes": ["Seconds: 5.456"]
+		},
+		{
+			"ms": 5216,
+			"notes": ["Seconds: 5.216"]
+		},
+		{
+			"ms": 4984,
+			"notes": ["Seconds: 4.984"]
+		},
+		{
+			"ms": 4936,
+			"notes": ["Seconds: 4.936"]
+		},
+		{
+			"ms": 4856,
+			"notes": ["Seconds: 4.856"]
+		},
+		{
+			"ms": 4120,
+			"notes": ["Seconds: 4.12"]
+		},
+		{
+			"ms": 3928,
+			"notes": ["Seconds: 3.928"]
+		},
+		{
+			"ms": 3616,
+			"notes": ["Seconds: 3.616"]
+		},
+		{
+			"ms": 3232,
+			"notes": ["Seconds: 3.232"]
+		},
+		{
+			"ms": 2832,
+			"notes": ["Seconds: 2.832"]
+		},
+		{
+			"ms": 2320,
+			"notes": ["Seconds: 2.32"]
+		},
+		{
+			"ms": 1424,
+			"notes": ["Seconds: 1.424"]
+		},
+		{
+			"ms": 1232,
+			"notes": ["Seconds: 1.232"]
+		},
+		{
+			"ms": 920,
+			"notes": ["Seconds: 0.92"]
+		},
+		{
+			"ms": 592,
+			"notes": ["Seconds: 0.592"]
 		}
 	],
-	"timeformat": "beats_and_steps"
+	"timeformat": "ms"
 }

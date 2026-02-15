@@ -1,5 +1,6 @@
 package urg;
 
+import flixel.util.FlxSort;
 import macohi.overrides.MSprite;
 import flixel.math.FlxMath;
 import macohi.overrides.MText;
@@ -109,6 +110,25 @@ class PlayState extends MusicBeatState
 
 	public function loadNotes()
 	{
+		SONG.notes.sort((struct1, struct2) -> {
+			var s1v = 0.0;
+			var s2v = 0.0;
+
+			if (SONG.timeformat == MILLISECONDS)
+			{
+				s1v = struct1.ms;
+				s2v = struct2.ms;
+			}
+
+			if (SONG.timeformat == STEPS)
+			{
+				s1v = struct1.step;
+				s2v = struct2.step;
+			}
+			
+			return FlxSort.byValues(FlxSort.ASCENDING, s1v,s2v);
+		});
+
 		for (note in SONG.notes)
 		{
 			if (SONG.timeformat == MILLISECONDS && note.ms == null)
