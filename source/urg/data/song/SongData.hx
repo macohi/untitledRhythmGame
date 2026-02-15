@@ -15,4 +15,6 @@ typedef NoteData =
 
 	?beat:Int,
 	?step:Int,
+
+	?notes:Array<String>,
 }

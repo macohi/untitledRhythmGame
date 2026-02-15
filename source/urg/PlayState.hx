@@ -79,7 +79,11 @@ class PlayState extends MusicBeatState
 			var noteData:NoteData = {};
 
 			if (SONG.timeformat == MILLISECONDS)
+			{
 				noteData.ms = FlxG.sound.music.time;
+
+				noteData.notes.push('Seconds: ${FlxG.sound.music.time / 1000}');
+			}
 			if (SONG.timeformat == BEATS_AND_STEPS)
 			{
 				noteData.beat = curBeat;
