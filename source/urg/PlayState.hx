@@ -1,5 +1,7 @@
 package urg;
 
+import flixel.math.FlxMath;
+import macohi.overrides.MText;
 import urg.data.save.URGSave;
 import flixel.group.FlxSpriteGroup.FlxTypedSpriteGroup;
 import flixel.group.FlxGroup.FlxTypedGroup;
@@ -31,6 +33,8 @@ class PlayState extends MusicBeatState
 	public var strumNote:NoteSprite;
 	public var notes:FlxTypedSpriteGroup<NoteSprite>;
 
+	public var songTimeText:MText;
+
 	override public function create()
 	{
 		SONG = Song.loadSong('Test');
@@ -61,6 +65,9 @@ class PlayState extends MusicBeatState
 
 		loadNotes();
 		updateDownscrollValues();
+
+		songTimeText = new MText(10, 10).makeText('Song Time: 0.00 / 0.00', 32);
+		add(songTimeText);
 
 		FlxG.sound.playMusic(AssetPaths.music('songs/Test'));
 		songStarted = true;
@@ -125,6 +132,7 @@ class PlayState extends MusicBeatState
 		}
 
 		Conductor.songPosition = FlxG.sound.music.time;
+		songTimeText.text = 'Song Position: ${FlxMath.roundDecimal(Conductor.songPosition / 1000, 2)}s / ${FlxMath.roundDecimal(FlxG.sound.music.time / 1000, 2)}s';
 
 		if (debugMode)
 		{
