@@ -1,3 +1,5 @@
+package urg;
+
 import flixel.FlxG;
 import macohi.funkin.koya.backend.AssetPaths;
 import macohi.funkin.pre_vslice.MusicBeatState;
