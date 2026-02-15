@@ -53,21 +53,21 @@ class PlayState extends MusicBeatState
 		notes.strumNote = strumNote;
 		notes.song = SONG;
 
-		notes.ghostNoteHit.add(function()
+		notes.ghostNoteHit.add(function(note:NoteSprite)
 		{
-			trace('ghost');
+			trace('ghost: ${note.data.ms.convert_ms_to_s()}s');
 		});
-		notes.badNoteHit.add(function()
+		notes.badNoteHit.add(function(note:NoteSprite)
 		{
-			trace('bad');
+			trace('bad: ${note.data.ms.convert_ms_to_s()}s');
 		});
-		notes.missNote.add(function()
+		notes.missNote.add(function(note:NoteSprite)
 		{
-			trace('miss');
+			trace('miss: ${note.data.ms.convert_ms_to_s()}s');
 		});
-		notes.goodNoteHit.add(function()
+		notes.goodNoteHit.add(function(note:NoteSprite)
 		{
-			trace('good');
+			trace('good: ${note.data.ms.convert_ms_to_s()}s');
 		});
 
 		notes.loadNotes();

@@ -18,11 +18,11 @@ class NoteGroup extends FlxTypedSpriteGroup<NoteSprite>
 
 	public var debugMode:Bool = false;
 
-	public var goodNoteHit:FlxSignal = new FlxSignal();
+	public var goodNoteHit:FlxTypedSignal<NoteSprite->Void> = new FlxTypedSignal<NoteSprite->Void>();
 
-	public var missNote:FlxSignal = new FlxSignal();
-	public var badNoteHit:FlxSignal = new FlxSignal();
-	public var ghostNoteHit:FlxSignal = new FlxSignal();
+	public var missNote:FlxTypedSignal<NoteSprite->Void> = new FlxTypedSignal<NoteSprite->Void>();
+	public var badNoteHit:FlxTypedSignal<NoteSprite->Void> = new FlxTypedSignal<NoteSprite->Void>();
+	public var ghostNoteHit:FlxTypedSignal<NoteSprite->Void> = new FlxTypedSignal<NoteSprite->Void>();
 
 	public function checkForOverlap(noteData:NoteData):Bool
 	{
@@ -151,7 +151,7 @@ class NoteGroup extends FlxTypedSpriteGroup<NoteSprite>
 					if (!note.late)
 					{
 						note.late = true;
-						missNote.dispatch();
+						missNote.dispatch(note);
 					}
 
 					if (!URGSave.instance.downscroll.get() && note.y < yoMin)
@@ -168,7 +168,7 @@ class NoteGroup extends FlxTypedSpriteGroup<NoteSprite>
 					if (FlxG.keys.justReleased.SPACE)
 					{
 						destroyNote = true;
-						goodNoteHit.dispatch();
+						goodNoteHit.dispatch(note);
 					}
 				}
 
