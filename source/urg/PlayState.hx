@@ -26,6 +26,8 @@ import flixel.FlxG;
 import macohi.funkin.koya.backend.AssetPaths;
 import macohi.funkin.pre_vslice.MusicBeatState;
 
+using macohi.util.TimeUtil;
+
 class PlayState extends MusicBeatState
 {
 	public var debugMode:Bool = true;
@@ -114,13 +116,15 @@ class PlayState extends MusicBeatState
 		}
 
 		Conductor.songPosition = FlxG.sound.music.time;
-		songTimeText.text = 'Song Position: ${FlxMath.roundDecimal(Conductor.songPosition / 1000, 2)}s / ${FlxMath.roundDecimal(FlxG.sound.music.time / 1000, 2)}s';
+		songTimeText.text = 'Song Position: ';
+		songTimeText.text += '${Conductor.songPosition.convert_ms_to_s().round()} s';
+		songTimeText.text += ' / ';
+		songTimeText.text += '${FlxG.sound.music.length.convert_ms_to_s().round()} s';
 
 		if (debugMode)
 		{
 			debugModeFunctions();
 		}
-
 		notes.curStep = curStep;
 	}
 
@@ -161,9 +165,9 @@ class PlayState extends MusicBeatState
 		if (FlxG.keys.anyPressed([W, UP, S, DOWN]))
 		{
 			if (FlxG.keys.anyPressed([W, UP]))
-				FlxG.sound.music.time += timeOffsetSeconds * 1000;
+				FlxG.sound.music.time += timeOffsetSeconds.convert_s_to_ms();
 			if (FlxG.keys.anyPressed([S, DOWN]))
-				FlxG.sound.music.time -= timeOffsetSeconds * 1000;
+				FlxG.sound.music.time -= timeOffsetSeconds.convert_s_to_ms();
 
 			if (FlxG.sound.music.time < 0)
 				FlxG.sound.music.time = 0;
@@ -180,7 +184,7 @@ class PlayState extends MusicBeatState
 			{
 				noteData.ms = FlxG.sound.music.time;
 
-				noteData.notes = ['Seconds: ${FlxG.sound.music.time / 1000}'];
+				noteData.notes = ['Seconds: ${FlxG.sound.music.time.convert_ms_to_s()}'];
 			}
 			if (SONG.timeformat == STEPS)
 			{
