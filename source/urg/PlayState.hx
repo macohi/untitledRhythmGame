@@ -145,6 +145,8 @@ class PlayState extends MusicBeatState
 		Conductor.songPosition = FlxG.sound.music.time;
 		songTimeText.text = 'Song Position: ${FlxMath.roundDecimal(Conductor.songPosition / 1000, 2)}s / ${FlxMath.roundDecimal(FlxG.sound.music.time / 1000, 2)}s';
 
+		strumline.y = Conductor.songPosition * 1000;
+
 		if (debugMode)
 		{
 			debugModeFunctions();
