@@ -161,6 +161,13 @@ class PlayState extends MusicBeatState
 				FlxG.sound.music.resume();
 		}
 
+		var timeOffsetSeconds = 1 / 10;
+
+		if (FlxG.keys.anyPressed([W, UP]))
+			FlxG.sound.music.time -= timeOffsetSeconds * 1000;
+		if (FlxG.keys.anyPressed([S, DOWN]))
+			FlxG.sound.music.time += timeOffsetSeconds * 1000;
+
 		if (FlxG.keys.justPressed.SPACE)
 		{
 			var noteData:NoteData = {};
