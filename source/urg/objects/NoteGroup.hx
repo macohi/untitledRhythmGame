@@ -5,11 +5,11 @@ import flixel.util.FlxColor;
 import flixel.util.FlxSort;
 import macohi.funkin.pre_vslice.Conductor;
 import urg.data.save.URGSave;
-import urg.data.song.SongData.NoteData;
+import urg.data.song.SongData;
 
 class NoteGroup extends FlxTypedSpriteGroup<NoteSprite>
 {
-	public var song:SongObject;
+	public var songData:SongData;
 	public var strumNote:NoteSprite;
 
 	public var curStep:Int = 0;
@@ -20,14 +20,14 @@ class NoteGroup extends FlxTypedSpriteGroup<NoteSprite>
 	{
 		for (note in members)
 		{
-			if (song.data.timeformat == STEPS)
+			if (songData.timeformat == STEPS)
 				if (noteData.step - note.data.step < 1)
 				{
 					return false;
 					trace('Overlapping with a note.');
 				}
 
-			if (song.data.timeformat == MILLISECONDS)
+			if (songData.timeformat == MILLISECONDS)
 			{
 				var msDiff = new NoteSprite().height;
 
@@ -57,18 +57,18 @@ class NoteGroup extends FlxTypedSpriteGroup<NoteSprite>
 
 	public function loadNotes()
 	{
-		song.data.notes.sort((struct1, struct2) ->
+		songData.notes.sort((struct1, struct2) ->
 		{
 			var s1v = 0.0;
 			var s2v = 0.0;
 
-			if (song.data.timeformat == MILLISECONDS)
+			if (songData.timeformat == MILLISECONDS)
 			{
 				s1v = struct1.ms;
 				s2v = struct2.ms;
 			}
 
-			if (song.data.timeformat == STEPS)
+			if (songData.timeformat == STEPS)
 			{
 				s1v = struct1.step;
 				s2v = struct2.step;
@@ -77,11 +77,11 @@ class NoteGroup extends FlxTypedSpriteGroup<NoteSprite>
 			return FlxSort.byValues(FlxSort.ASCENDING, s1v, s2v);
 		});
 
-		for (note in song.data.notes)
+		for (note in songData.notes)
 		{
-			if (song.data.timeformat == MILLISECONDS && note.ms == null)
+			if (songData.timeformat == MILLISECONDS && note.ms == null)
 				continue;
-			if (song.data.timeformat == STEPS && note.step == null)
+			if (songData.timeformat == STEPS && note.step == null)
 				continue;
 
 			var noteSpr:NoteSprite = new NoteSprite(false, note);
@@ -104,9 +104,9 @@ class NoteGroup extends FlxTypedSpriteGroup<NoteSprite>
 
 			var YOffset:Float = 0;
 
-			if (song.data.timeformat == MILLISECONDS)
+			if (songData.timeformat == MILLISECONDS)
 				YOffset = ((Conductor.songPosition - note.data.ms));
-			if (song.data.timeformat == STEPS)
+			if (songData.timeformat == STEPS)
 				YOffset = ((curStep - note.data.step) * note.height);
 
 			// + actually goes down in flixel lol
