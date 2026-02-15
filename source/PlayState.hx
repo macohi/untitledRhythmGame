@@ -1,8 +1,6 @@
-package;
+import macohi.funkin.pre_vslice.MusicBeatState;
 
-import flixel.FlxState;
-
-class PlayState extends FlxState
+class PlayState extends MusicBeatState
 {
 	override public function create()
 	{
