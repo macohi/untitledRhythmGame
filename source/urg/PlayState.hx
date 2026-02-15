@@ -115,7 +115,15 @@ class PlayState extends MusicBeatState
 
 	public function debugModeFunctions()
 	{
-		if (FlxG.keys.justReleased.SPACE)
+		if (FlxG.keys.justReleased.ENTER)
+		{
+			if (FlxG.sound.music.playing)
+				FlxG.sound.music.pause();
+			else
+				FlxG.sound.music.resume();
+		}
+
+		if (FlxG.keys.justPressed.SPACE)
 		{
 			var noteData:NoteData = {};
 
