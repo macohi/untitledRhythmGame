@@ -78,7 +78,7 @@ class PlayState extends MusicBeatState
 		var isDownscroll = URGSave.instance.downscroll.get();
 
 		strumNote.y = 50;
-		
+
 		if (isDownscroll)
 			strumNote.y = FlxG.height - strumNote.height - strumNote.y;
 	}
@@ -147,21 +147,25 @@ class PlayState extends MusicBeatState
 				YOffset = ((curStep - note.data.step) * note.height);
 
 			// + actually goes down in flixel lol
+			var passedStrum:Bool = (note.y > strumNote.y);
 			if (!URGSave.instance.downscroll.get())
+			{
 				YOffset = -YOffset;
+				passedStrum = (note.y < strumNote.y);
+			}
 
 			note.y = strumNote.y + YOffset;
 
 			if (debugMode)
 			{
-				if (note.y < strumNote.y)
+				if (passedStrum)
 					note.color = FlxColor.LIME;
 				else
 					note.color = FlxColor.RED;
 			}
 			else
 			{
-				if (note.y < strumNote.y)
+				if (passedStrum)
 					note.alpha = 0.3;
 				else
 					note.alpha = 1.0;
@@ -185,7 +189,7 @@ class PlayState extends MusicBeatState
 				FlxG.sound.music.resume();
 		}
 
-		var timeOffsetSeconds = 1 / 10;
+		var timeOffsetSeconds = 1 / 500;
 
 		if (FlxG.keys.anyPressed([W, UP]))
 			FlxG.sound.music.time -= timeOffsetSeconds * 1000;
