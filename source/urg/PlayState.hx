@@ -82,7 +82,9 @@ class PlayState extends MusicBeatState
 			{
 				noteData.ms = FlxG.sound.music.time;
 
-				noteData.notes.push('Seconds: ${FlxG.sound.music.time / 1000}');
+				noteData.notes = [
+					'Seconds: ${FlxG.sound.music.time / 1000}'
+				];
 			}
 			if (SONG.timeformat == BEATS_AND_STEPS)
 			{
