@@ -1,11 +1,11 @@
 package urg;
 
+import macohi.funkin.pre_vslice.Conductor;
 #if debug
 #if hscript
 import flixel.system.debug.console.ConsoleUtil;
 #end
 #end
-
 import urg.data.song.Song;
 import urg.data.song.SongData;
 import flixel.FlxG;
@@ -44,7 +44,16 @@ class PlayState extends MusicBeatState
 	{
 		super.update(elapsed);
 
-		if (!songStarted) return;
+		if (!songStarted)
+			return;
+		
+		if (FlxG.sound.music == null)
+		{
+			songStarted = false;
+			return;
+		}
+
+		Conductor.songPosition = FlxG.sound.music.time;
 
 		if (debugMode)
 		{
@@ -54,7 +63,6 @@ class PlayState extends MusicBeatState
 
 	public function debugModeFunctions()
 	{
-
 		if (FlxG.keys.justReleased.SPACE)
 		{
 			var noteData:NoteData = {
