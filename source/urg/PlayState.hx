@@ -84,7 +84,7 @@ class PlayState extends MusicBeatState
 	{
 		var isDownscroll = URGSave.instance.downscroll.get();
 
-		strumNote.y = 50;
+		strumNote.y = 100;
 
 		if (isDownscroll)
 			strumNote.y = FlxG.height - strumNote.height - strumNote.y;
@@ -100,7 +100,7 @@ class PlayState extends MusicBeatState
 			songStarted = false;
 			return;
 		}
-		
+
 		super.update(elapsed);
 
 		Conductor.songPosition = SONG.inst.time;
