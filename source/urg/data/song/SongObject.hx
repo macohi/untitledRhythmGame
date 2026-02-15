@@ -1,0 +1,47 @@
+package urg.data.song;
+
+import macohi.overrides.MSound;
+import macohi.funkin.koya.backend.AssetPaths;
+import lime.system.Clipboard;
+import haxe.Json;
+import flixel.system.debug.console.ConsoleUtil;
+
+class SongObject
+{
+	public var data:SongData;
+
+	public var debugMode:Bool = false;
+
+	public var inst:MSound;
+
+	public function new(song:String, ?debugMode:Bool = false)
+	{
+		this.debugMode = debugMode;
+
+		data = Song.loadSong(song);
+
+		if (data == null)
+			throw 'Where\'s the song?';
+
+		#if debug
+		#if hscript
+		ConsoleUtil.registerObject('SONG', data);
+		ConsoleUtil.registerFunction('traceSONG', function()
+		{
+			trace(Json.stringify(data));
+		});
+		ConsoleUtil.registerFunction('copySONG', function()
+		{
+			Clipboard.text = Json.stringify(data, '\t');
+		});
+		#end
+		#end
+
+		inst = new MSound().loadEmbedded(AssetPaths.music('songs/$song'));
+
+		if (this.debugMode)
+		{
+			inst.pause();
+		}
+	}
+}

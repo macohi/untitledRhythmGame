@@ -1,29 +1,16 @@
 package urg;
 
+import urg.data.song.SongObject;
 import urg.objects.NoteGroup;
-import flixel.util.FlxSort;
-import macohi.overrides.MSprite;
-import flixel.math.FlxMath;
 import macohi.overrides.MText;
 import urg.data.save.URGSave;
-import flixel.group.FlxSpriteGroup.FlxTypedSpriteGroup;
-import flixel.group.FlxGroup.FlxTypedGroup;
-import lime.system.Clipboard;
-import haxe.Json;
 import flixel.tweens.FlxEase;
 import flixel.tweens.FlxTween;
 import flixel.util.FlxColor;
 import urg.objects.NoteSprite;
 import macohi.funkin.pre_vslice.Conductor;
-#if debug
-#if hscript
-import flixel.system.debug.console.ConsoleUtil;
-#end
-#end
-import urg.data.song.Song;
 import urg.data.song.SongData;
 import flixel.FlxG;
-import macohi.funkin.koya.backend.AssetPaths;
 import macohi.funkin.pre_vslice.MusicBeatState;
 
 using macohi.util.TimeUtil;
@@ -33,7 +20,7 @@ class PlayState extends MusicBeatState
 	public var debugMode:Bool = true;
 	public var songStarted:Bool = false;
 
-	public var SONG:SongData;
+	public var SONG:SongObject;
 
 	public var strumNote:NoteSprite;
 	public var notes:NoteGroup;
@@ -44,24 +31,15 @@ class PlayState extends MusicBeatState
 
 	override public function create()
 	{
-		SONG = Song.loadSong('Test');
-
-		if (SONG == null)
-			throw 'Where\'s the song?';
-
-		#if debug
-		#if hscript
-		ConsoleUtil.registerObject('SONG', SONG);
-		ConsoleUtil.registerFunction('traceSONG', function()
+		SONG = new SongObject('Test', debugMode);
+		SONG.inst.onFinish.add(function()
 		{
-			trace(Json.stringify(SONG));
+			songStarted = false;
 		});
-		ConsoleUtil.registerFunction('copySONG', function()
+		SONG.inst.onStart.add(function()
 		{
-			Clipboard.text = Json.stringify(SONG, '\t');
+			songStarted = true;
 		});
-		#end
-		#end
 
 		strumNote = new NoteSprite(true);
 		strumNote.screenCenter();
@@ -77,19 +55,11 @@ class PlayState extends MusicBeatState
 		songTimeText.scrollFactor.set();
 		add(songTimeText);
 
-		FlxG.sound.playMusic(AssetPaths.music('songs/Test'));
-		songStarted = true;
-
-		if (debugMode)
-		{
-			FlxG.sound.music.pause();
-		}
-
 		super.create();
 
 		notes.strumNote = strumNote;
 		notes.debugMode = debugMode;
-		notes.songData = SONG;
+		notes.songData = SONG.data;
 	}
 
 	public function updateDownscrollValues()
@@ -109,17 +79,17 @@ class PlayState extends MusicBeatState
 		if (!songStarted)
 			return;
 
-		if (FlxG.sound.music == null)
+		if (SONG.inst == null)
 		{
 			songStarted = false;
 			return;
 		}
 
-		Conductor.songPosition = FlxG.sound.music.time;
+		Conductor.songPosition = SONG.inst.time;
 		songTimeText.text = 'Song Position: ';
 		songTimeText.text += '${Conductor.songPosition.convert_ms_to_s().round()} s';
 		songTimeText.text += ' / ';
-		songTimeText.text += '${FlxG.sound.music.length.convert_ms_to_s().round()} s';
+		songTimeText.text += '${SONG.inst.length.convert_ms_to_s().round()} s';
 
 		if (debugMode)
 		{
@@ -151,10 +121,10 @@ class PlayState extends MusicBeatState
 
 		if (FlxG.keys.justReleased.ENTER)
 		{
-			if (FlxG.sound.music.playing)
-				FlxG.sound.music.pause();
+			if (SONG.inst.playing)
+				SONG.inst.pause();
 			else
-				FlxG.sound.music.resume();
+				SONG.inst.resume();
 		}
 
 		var timeOffsetSeconds = 1 / 500;
@@ -165,28 +135,28 @@ class PlayState extends MusicBeatState
 		if (FlxG.keys.anyPressed([W, UP, S, DOWN]))
 		{
 			if (FlxG.keys.anyPressed([W, UP]))
-				FlxG.sound.music.time += timeOffsetSeconds.convert_s_to_ms();
+				SONG.inst.time += timeOffsetSeconds.convert_s_to_ms();
 			if (FlxG.keys.anyPressed([S, DOWN]))
-				FlxG.sound.music.time -= timeOffsetSeconds.convert_s_to_ms();
+				SONG.inst.time -= timeOffsetSeconds.convert_s_to_ms();
 
-			if (FlxG.sound.music.time < 0)
-				FlxG.sound.music.time = 0;
+			if (SONG.inst.time < 0)
+				SONG.inst.time = 0;
 
-			if (FlxG.sound.music.time > FlxG.sound.music.length)
-				FlxG.sound.music.time = FlxG.sound.music.length;
+			if (SONG.inst.time > SONG.inst.length)
+				SONG.inst.time = SONG.inst.length;
 		}
 
-		if (FlxG.keys.justPressed.SPACE && !FlxG.sound.music.playing)
+		if (FlxG.keys.justPressed.SPACE && !SONG.inst.playing)
 		{
 			var noteData:NoteData = {};
 
-			if (SONG.timeformat == MILLISECONDS)
+			if (SONG.data.timeformat == MILLISECONDS)
 			{
-				noteData.ms = FlxG.sound.music.time;
+				noteData.ms = SONG.inst.time;
 
-				noteData.notes = ['Seconds: ${FlxG.sound.music.time.convert_ms_to_s()}'];
+				noteData.notes = ['Seconds: ${SONG.inst.time.convert_ms_to_s()}'];
 			}
-			if (SONG.timeformat == STEPS)
+			if (SONG.data.timeformat == STEPS)
 			{
 				noteData.step = curStep;
 			}
@@ -199,7 +169,7 @@ class PlayState extends MusicBeatState
 				return;
 
 			trace('Added note: $noteData');
-			SONG.notes.push(noteData);
+			SONG.data.notes.push(noteData);
 
 			highlightStrum(FlxColor.RED);
 			notes.reloadNotes();
