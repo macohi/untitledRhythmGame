@@ -4,7 +4,7 @@
 
 	<!-- _________________________ Application Settings _________________________ -->
 
-	<app title="flixelGeometryDash" file="flixelGeometryDash" main="Main" version="1.0" company="Macohi" />
+	<app title="Flixel Geometry Dash" file="FlixelGeometry" main="Main" version="1.0" company="Macohi" />
 
 	<app preloader="flixel.system.FlxPreloader" />
 
