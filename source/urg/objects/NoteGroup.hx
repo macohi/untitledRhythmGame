@@ -1,7 +1,9 @@
 package urg.objects;
 
+import flixel.FlxG;
 import flixel.group.FlxSpriteGroup.FlxTypedSpriteGroup;
 import flixel.util.FlxColor;
+import flixel.util.FlxSignal;
 import flixel.util.FlxSort;
 import macohi.funkin.pre_vslice.Conductor;
 import urg.data.save.URGSave;
@@ -15,6 +17,11 @@ class NoteGroup extends FlxTypedSpriteGroup<NoteSprite>
 	public var curStep:Int = 0;
 
 	public var debugMode:Bool = false;
+
+	public var goodNoteHit:FlxSignal = new FlxSignal();
+
+	public var badNoteHit:FlxSignal = new FlxSignal();
+	public var ghostNoteHit:FlxSignal = new FlxSignal();
 
 	public function checkForOverlap(noteData:NoteData):Bool
 	{
@@ -109,15 +116,21 @@ class NoteGroup extends FlxTypedSpriteGroup<NoteSprite>
 			if (song.data.timeformat == STEPS)
 				YOffset = ((curStep - note.data.step) * note.height);
 
-			// + actually goes down in flixel lol
-			var passedStrum:Bool = (note.y > strumNote.y);
 			if (!URGSave.instance.downscroll.get())
-			{
 				YOffset = -YOffset;
-				passedStrum = (note.y < strumNote.y);
-			}
 
 			note.y = strumNote.y + YOffset;
+			
+			// + actually goes down in flixel lol
+			var passedStrum:Bool = (note.y > strumNote.y);
+			var yoMin:Float = -note.height * 16;
+
+			if (!URGSave.instance.downscroll.get())
+				passedStrum = (note.y < strumNote.y);
+			else
+				yoMin = FlxG.width + -yoMin;
+
+			note.active = !(Math.abs(YOffset) > (FlxG.height * 2));
 
 			if (debugMode)
 			{
@@ -128,10 +141,35 @@ class NoteGroup extends FlxTypedSpriteGroup<NoteSprite>
 			}
 			else
 			{
+				var destroyNote:Bool = false;
+
 				if (passedStrum)
+				{
 					note.alpha = 0.3;
+
+					if (!URGSave.instance.downscroll.get() && note.y < yoMin)
+						destroyNote = true;
+
+					if (URGSave.instance.downscroll.get() && note.y > yoMin)
+						destroyNote = true;
+				}
 				else
 					note.alpha = 1.0;
+
+				if (song.data.timeformat == MILLISECONDS && Math.abs(YOffset) < PlayState.INPUT_WINDOW_MS)
+				{
+					if (FlxG.keys.justReleased.SPACE)
+					{
+						destroyNote = true;
+						goodNoteHit.dispatch();
+					}
+				}
+
+				if (destroyNote)
+				{
+					this.members.remove(note);
+					note.destroy();
+				}
 			}
 		}
 	}

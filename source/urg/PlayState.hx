@@ -17,6 +17,10 @@ using macohi.util.TimeUtil;
 
 class PlayState extends MusicBeatState
 {
+	public static var INPUT_WINDOW_MS:Float = 0.3.convert_s_to_ms();
+
+	public function goodNoteHit() {}
+
 	public var debugMode:Bool = true;
 	public var songStarted:Bool = false;
 
@@ -36,7 +40,7 @@ class PlayState extends MusicBeatState
 		{
 			songStarted = false;
 		};
-		
+
 		songStarted = true;
 
 		strumNote = new NoteSprite(true);
@@ -49,6 +53,16 @@ class PlayState extends MusicBeatState
 		notes.strumNote = strumNote;
 		notes.debugMode = debugMode;
 		notes.song = SONG;
+
+		notes.ghostNoteHit.add(function() {
+			trace('ghost');
+		});
+		notes.badNoteHit.add(function() {
+			trace('bad');
+		});
+		notes.goodNoteHit.add(function() {
+			trace('good');
+		});
 
 		notes.loadNotes();
 		updateDownscrollValues();
