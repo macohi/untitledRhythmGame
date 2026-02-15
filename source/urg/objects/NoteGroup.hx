@@ -16,6 +16,19 @@ class NoteGroup extends FlxTypedSpriteGroup<NoteSprite>
 
 	public var debugMode:Bool = false;
 
+	public function reloadNotes()
+	{
+		for (note in this.members)
+		{
+			this.members.remove(note);
+			note.destroy();
+		}
+
+		this.clear();
+
+		this.loadNotes();
+	}
+
 	public function loadNotes()
 	{
 		songData.notes.sort((struct1, struct2) ->

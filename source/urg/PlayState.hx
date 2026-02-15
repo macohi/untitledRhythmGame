@@ -100,19 +100,6 @@ class PlayState extends MusicBeatState
 			strumNote.y = FlxG.height - strumNote.height - strumNote.y;
 	}
 
-	public function reloadNotes()
-	{
-		for (note in notes.members)
-		{
-			notes.members.remove(note);
-			note.destroy();
-		}
-
-		notes.clear();
-
-		notes.loadNotes();
-	}
-
 	override public function update(elapsed:Float)
 	{
 		super.update(elapsed);
@@ -233,7 +220,7 @@ class PlayState extends MusicBeatState
 			SONG.notes.push(noteData);
 
 			highlightStrum(FlxColor.RED);
-			reloadNotes();
+			notes.reloadNotes();
 		}
 	}
 
