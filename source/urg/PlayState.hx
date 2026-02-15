@@ -69,6 +69,8 @@ class PlayState extends MusicBeatState
 
 		waveform.loadDataFromFlxSound(SONG.inst);
 
+		waveform.waveformDuration = 5.convert_s_to_ms();
+
 		waveform.screenCenter();
 		waveform.x += waveform.width;
 	}
@@ -97,10 +99,13 @@ class PlayState extends MusicBeatState
 		}
 
 		Conductor.songPosition = SONG.inst.time;
+		
 		songTimeText.text = 'Song Position: ';
 		songTimeText.text += '${Conductor.songPosition.convert_ms_to_s().round()} s';
 		songTimeText.text += ' / ';
 		songTimeText.text += '${SONG.inst.length.convert_ms_to_s().round()} s';
+
+		waveform.waveformTime = Conductor.songPosition;
 
 		if (debugMode)
 		{
