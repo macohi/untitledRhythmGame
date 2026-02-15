@@ -199,6 +199,9 @@ class PlayState extends MusicBeatState
 
 		var timeOffsetSeconds = 1 / 500;
 
+		if (FlxG.keys.pressed.SHIFT)
+			timeOffsetSeconds *= 2;
+
 		if (FlxG.keys.anyPressed([W, UP]))
 			FlxG.sound.music.time -= timeOffsetSeconds * 1000;
 		if (FlxG.keys.anyPressed([S, DOWN]))
