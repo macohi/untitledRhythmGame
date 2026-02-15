@@ -61,16 +61,7 @@ class PlayState extends MusicBeatState
 		notes = new FlxTypedSpriteGroup<NoteSprite>();
 		add(notes);
 
-		for (note in SONG.notes)
-		{
-			if (SONG.timeformat == MILLISECONDS && note.ms == null)
-				continue;
-			if (SONG.timeformat == STEPS && note.step == null)
-				continue;
-
-			var noteSpr:NoteSprite = new NoteSprite(false, note);
-			notes.add(noteSpr);
-		}
+		loadNotes();
 
 		songStarted = true;
 
@@ -80,6 +71,34 @@ class PlayState extends MusicBeatState
 		}
 
 		super.create();
+	}
+
+	public function reloadNotes()
+	{
+		for (note in notes.members)
+		{
+			notes.members.remove(note);
+			note.destroy();
+		}
+
+		notes.clear();
+
+		loadNotes();
+	}
+
+	public function loadNotes()
+	{
+		for (note in SONG.notes)
+		{
+			if (SONG.timeformat == MILLISECONDS && note.ms == null)
+				continue;
+			if (SONG.timeformat == STEPS && note.step == null)
+				continue;
+
+			var noteSpr:NoteSprite = new NoteSprite(false, note);
+			notes.add(noteSpr);
+			notes.screenCenter();
+		}
 	}
 
 	override public function update(elapsed:Float)
@@ -101,20 +120,24 @@ class PlayState extends MusicBeatState
 		{
 			debugModeFunctions();
 		}
-		else
-		{
-			for (note in notes.members)
-			{
-				if (SONG.timeformat == MILLISECONDS)
-					note.y = strumNote.y + ((Conductor.songPosition - note.data.ms) * note.height);
-				if (SONG.timeformat == STEPS)
-					note.y = strumNote.y + ((curStep - note.data.step) * note.height);
 
-				if (note.y < strumNote.y)
-					note.alpha = 0.3;
-				else
-					note.alpha = 1.0;
+		for (note in notes.members)
+		{
+			if (note == null)
+			{
+				notes.members.remove(note);
+				continue;
 			}
+
+			if (SONG.timeformat == MILLISECONDS)
+				note.y = strumNote.y + ((Conductor.songPosition - note.data.ms) * note.height);
+			if (SONG.timeformat == STEPS)
+				note.y = strumNote.y + ((curStep - note.data.step) * note.height);
+
+			if (note.y < strumNote.y)
+				note.alpha = 0.3;
+			else
+				note.alpha = 1.0;
 		}
 	}
 
@@ -147,9 +170,20 @@ class PlayState extends MusicBeatState
 
 			SONG.notes.push(noteData);
 
-			FlxTween.color(strumNote, 1, FlxColor.RED, FlxColor.WHITE, {
-				ease: FlxEase.quadInOut
-			});
+			highlightStrum(FlxColor.RED);
+
+			reloadNotes();
 		}
+	}
+
+	public function highlightStrum(color:Null<FlxColor>)
+	{
+		if (color == null)
+			return;
+
+		FlxTween.cancelTweensOf(strumNote);
+		FlxTween.color(strumNote, 1, color, FlxColor.WHITE, {
+			ease: FlxEase.quadInOut
+		});
 	}
 }
