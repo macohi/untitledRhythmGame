@@ -254,7 +254,7 @@ class PlayState extends MusicBeatState
 				FlxG.sound.music.time = FlxG.sound.music.length;
 		}
 
-		if (FlxG.keys.justPressed.SPACE)
+		if (FlxG.keys.justPressed.SPACE && !FlxG.sound.music.playing)
 		{
 			var noteData:NoteData = {};
 
