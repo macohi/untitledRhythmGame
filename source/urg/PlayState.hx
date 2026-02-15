@@ -189,29 +189,7 @@ class PlayState extends MusicBeatState
 
 			var canAdd:Bool = true;
 
-			for (note in notes)
-			{
-				if (!canAdd)
-					continue;
-
-				if (SONG.timeformat == STEPS)
-					if (noteData.step - note.data.step < 1)
-					{
-						canAdd = false;
-						trace('Overlapping with a note.');
-					}
-
-				if (SONG.timeformat == MILLISECONDS)
-				{
-					var msDiff = new NoteSprite().height;
-
-					if (noteData.ms - note.data.ms < msDiff)
-					{
-						canAdd = false;
-						trace('Overlapping with a note. (${noteData.ms - note.data.ms}ms < ${msDiff}ms)');
-					}
-				}
-			}
+			canAdd = notes.checkForOverlap(noteData);
 
 			if (!canAdd)
 				return;

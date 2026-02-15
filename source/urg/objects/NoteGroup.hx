@@ -16,6 +16,32 @@ class NoteGroup extends FlxTypedSpriteGroup<NoteSprite>
 
 	public var debugMode:Bool = false;
 
+	public function checkForOverlap(noteData:NoteData):Bool
+	{
+		for (note in members)
+		{
+			if (songData.timeformat == STEPS)
+				if (noteData.step - note.data.step < 1)
+				{
+					return false;
+					trace('Overlapping with a note.');
+				}
+
+			if (songData.timeformat == MILLISECONDS)
+			{
+				var msDiff = new NoteSprite().height;
+
+				if (noteData.ms - note.data.ms < msDiff)
+				{
+					return false;
+					trace('Overlapping with a note. (${noteData.ms - note.data.ms}ms < ${msDiff}ms)');
+				}
+			}
+		}
+
+		return true;
+	}
+
 	public function reloadNotes()
 	{
 		for (note in this.members)
