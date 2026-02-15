@@ -7,7 +7,6 @@ import flixel.util.FlxColor;
 import macohi.funkin.pre_vslice.Conductor;
 import macohi.funkin.pre_vslice.MusicBeatState;
 import macohi.overrides.MText;
-import macohi.overrides.MWaveform;
 import urg.data.save.URGSave;
 import urg.data.song.SongData;
 import urg.objects.NoteGroup;
@@ -29,8 +28,6 @@ class PlayState extends MusicBeatState
 	public var songTimeText:MText;
 
 	public var defaultCamZoom:Float = 1.0;
-
-	public var waveform:MWaveform;
 
 	override public function create()
 	{
@@ -63,16 +60,6 @@ class PlayState extends MusicBeatState
 		add(songTimeText);
 
 		super.create();
-
-		waveform = new MWaveform(0, 0, 256, FlxG.height, FlxColor.WHITE, FlxColor.TRANSPARENT);
-		add(waveform);
-
-		waveform.loadDataFromFlxSound(cast SONG.inst);
-
-		waveform.waveformDuration = 5.convert_s_to_ms();
-
-		waveform.screenCenter();
-		waveform.x += waveform.width;
 	}
 
 	public function updateDownscrollValues()
@@ -104,8 +91,6 @@ class PlayState extends MusicBeatState
 		songTimeText.text += '${Conductor.songPosition.convert_ms_to_s().round()} s';
 		songTimeText.text += ' / ';
 		songTimeText.text += '${SONG.inst.length.convert_ms_to_s().round()} s';
-
-		waveform.waveformTime = Conductor.songPosition;
 
 		if (debugMode)
 		{
