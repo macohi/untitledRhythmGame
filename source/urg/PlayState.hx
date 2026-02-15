@@ -66,7 +66,7 @@ class PlayState extends MusicBeatState
 		loadNotes();
 		updateDownscrollValues();
 
-		songTimeText = new MText(10, 10).makeText('Song Time: 0.00 / 0.00', 32);
+		songTimeText = new MText(10, 10).makeText('Song Time: 0.00 / 0.00', 16);
 		add(songTimeText);
 
 		FlxG.sound.playMusic(AssetPaths.music('songs/Test'));
