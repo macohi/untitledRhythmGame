@@ -1,5 +1,11 @@
 package urg;
 
+#if debug
+#if hscript
+import flixel.system.debug.console.ConsoleUtil;
+#end
+#end
+
 import urg.data.song.Song;
 import urg.data.song.SongData;
 import flixel.FlxG;
@@ -23,6 +29,12 @@ class PlayState extends MusicBeatState
 			throw 'Where\'s the song?';
 		}
 
+		#if debug
+		#if hscript
+		ConsoleUtil.registerObject('SONG', SONG);
+		#end
+		#end
+
 		songStarted = true;
 
 		super.create();
@@ -45,7 +57,16 @@ class PlayState extends MusicBeatState
 
 		if (FlxG.keys.justReleased.SPACE)
 		{
+			var noteData:NoteData = {
+				ms: FlxG.sound.music.time,
 
+				beat: curBeat,
+				step: curStep,
+			};
+
+			trace('Added note: $noteData');
+
+			SONG.notes.push(noteData);
 		}
 	}
 }
