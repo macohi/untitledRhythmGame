@@ -130,7 +130,7 @@ class PlayState extends MusicBeatState
 			}
 
 			if (SONG.timeformat == MILLISECONDS)
-				note.y = strumNote.y + ((Conductor.songPosition - note.data.ms) * note.height);
+				note.y = strumNote.y + ((Conductor.songPosition - note.data.ms));
 			if (SONG.timeformat == STEPS)
 				note.y = strumNote.y + ((curStep - note.data.step) * note.height);
 
@@ -139,7 +139,7 @@ class PlayState extends MusicBeatState
 				if (note.y < strumNote.y)
 					note.color = FlxColor.LIME;
 				else
-					note.color = FlxColor.WHITE;
+					note.color = FlxColor.RED;
 			}
 			else
 			{
