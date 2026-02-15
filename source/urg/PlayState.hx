@@ -38,8 +38,6 @@ class PlayState extends MusicBeatState
 
 	public var defaultCamZoom:Float = 1.0;
 
-	public var strumline:MSprite;
-
 	override public function create()
 	{
 		SONG = Song.loadSong('Test');
@@ -60,11 +58,6 @@ class PlayState extends MusicBeatState
 		});
 		#end
 		#end
-
-		strumline = new MSprite().makeGraphic(FlxG.width, 8);
-		add(strumline);
-		strumline.visible = false;
-		strumline.scrollFactor.set();
 
 		strumNote = new NoteSprite(true);
 		strumNote.screenCenter();
@@ -145,8 +138,6 @@ class PlayState extends MusicBeatState
 		Conductor.songPosition = FlxG.sound.music.time;
 		songTimeText.text = 'Song Position: ${FlxMath.roundDecimal(Conductor.songPosition / 1000, 2)}s / ${FlxMath.roundDecimal(FlxG.sound.music.time / 1000, 2)}s';
 
-		strumline.y = Conductor.songPosition * 1000;
-
 		if (debugMode)
 		{
 			debugModeFunctions();
@@ -197,7 +188,6 @@ class PlayState extends MusicBeatState
 	public function resetCamMusicScrubbing()
 	{
 		FlxG.camera.zoom = defaultCamZoom;
-		strumline.visible = false;
 		FlxG.camera.y = 0;
 	}
 
@@ -253,9 +243,8 @@ class PlayState extends MusicBeatState
 		if (FlxG.keys.justPressed.CONTROL)
 		{
 			FlxG.camera.zoom = 0.5;
-			strumline.visible = true;
 		}
-		if (FlxG.keys.justReleased.CONTROL && strumline.visible)
+		if (FlxG.keys.justReleased.CONTROL && FlxG.camera.zoom != defaultCamZoom)
 		{
 			resetCamMusicScrubbing();
 		}
