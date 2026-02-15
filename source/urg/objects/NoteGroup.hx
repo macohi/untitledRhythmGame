@@ -1,5 +1,6 @@
 package urg.objects;
 
+import flixel.util.FlxSort;
 import flixel.util.FlxColor;
 import urg.data.save.URGSave;
 import macohi.funkin.pre_vslice.Conductor;
@@ -14,6 +15,41 @@ class NoteGroup extends FlxTypedSpriteGroup<NoteSprite>
 	public var curStep:Int = 0;
 
 	public var debugMode:Bool = false;
+
+	public function loadNotes()
+	{
+		songData.notes.sort((struct1, struct2) ->
+		{
+			var s1v = 0.0;
+			var s2v = 0.0;
+
+			if (songData.timeformat == MILLISECONDS)
+			{
+				s1v = struct1.ms;
+				s2v = struct2.ms;
+			}
+
+			if (songData.timeformat == STEPS)
+			{
+				s1v = struct1.step;
+				s2v = struct2.step;
+			}
+
+			return FlxSort.byValues(FlxSort.ASCENDING, s1v, s2v);
+		});
+
+		for (note in songData.notes)
+		{
+			if (songData.timeformat == MILLISECONDS && note.ms == null)
+				continue;
+			if (songData.timeformat == STEPS && note.step == null)
+				continue;
+
+			var noteSpr:NoteSprite = new NoteSprite(false, note);
+			add(noteSpr);
+			noteSpr.screenCenter();
+		}
+	}
 
 	override function update(elapsed:Float)
 	{

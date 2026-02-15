@@ -68,7 +68,7 @@ class PlayState extends MusicBeatState
 		notes = new NoteGroup();
 		add(notes);
 
-		loadNotes();
+		notes.loadNotes();
 		updateDownscrollValues();
 
 		songTimeText = new MText(10, 10).makeText('Song Time: 0.00 / 0.00', 16);
@@ -110,42 +110,7 @@ class PlayState extends MusicBeatState
 
 		notes.clear();
 
-		loadNotes();
-	}
-
-	public function loadNotes()
-	{
-		SONG.notes.sort((struct1, struct2) ->
-		{
-			var s1v = 0.0;
-			var s2v = 0.0;
-
-			if (SONG.timeformat == MILLISECONDS)
-			{
-				s1v = struct1.ms;
-				s2v = struct2.ms;
-			}
-
-			if (SONG.timeformat == STEPS)
-			{
-				s1v = struct1.step;
-				s2v = struct2.step;
-			}
-
-			return FlxSort.byValues(FlxSort.ASCENDING, s1v, s2v);
-		});
-
-		for (note in SONG.notes)
-		{
-			if (SONG.timeformat == MILLISECONDS && note.ms == null)
-				continue;
-			if (SONG.timeformat == STEPS && note.step == null)
-				continue;
-
-			var noteSpr:NoteSprite = new NoteSprite(false, note);
-			notes.add(noteSpr);
-			notes.screenCenter();
-		}
+		notes.loadNotes();
 	}
 
 	override public function update(elapsed:Float)
