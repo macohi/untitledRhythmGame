@@ -8,5 +8,5 @@ class SongOptions
 enum abstract SongTimeformat(String) from String to String
 {
 	var MILLISECONDS = 'ms';
-	var BEATS_AND_STEPS = 'beats_and_steps';
+	var STEPS = 'steps';
 }

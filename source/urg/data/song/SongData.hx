@@ -13,7 +13,7 @@ typedef NoteData =
 {
 	?ms:Float,
 
-	?beat:Int,
+	// ?beat:Int,
 	?step:Int,
 
 	?notes:Array<String>,

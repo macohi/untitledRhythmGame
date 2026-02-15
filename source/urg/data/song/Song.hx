@@ -17,7 +17,7 @@ class Song
 			notes: [],
 		};
 
-		var chartPath:String = AssetPaths.chart(song, song);
+		var chartPath:String = URGAssetPaths.chart(song);
 		if (KoyaAssets.exists(chartPath))
 		{
 			var jsonData:SongData = null;

@@ -63,6 +63,11 @@ class PlayState extends MusicBeatState
 
 		for (note in SONG.notes)
 		{
+			if (SONG.timeformat == MILLISECONDS && note.ms == null)
+				continue;
+			if (SONG.timeformat == STEPS && note.step == null)
+				continue;
+
 			var noteSpr:NoteSprite = new NoteSprite(false, note);
 			notes.add(noteSpr);
 		}
@@ -87,21 +92,24 @@ class PlayState extends MusicBeatState
 
 		Conductor.songPosition = FlxG.sound.music.time;
 
-		if (SONG.timeformat == MILLISECONDS)
+		if (debugMode)
+		{
+			debugModeFunctions();
+		}
+		else
 		{
 			for (note in notes.members)
 			{
-				note.y = strumNote.y + ((Conductor.songPosition - note.data.ms) * note.height);
+				if (SONG.timeformat == MILLISECONDS)
+					note.y = strumNote.y + ((Conductor.songPosition - note.data.ms) * note.height);
+				if (SONG.timeformat == STEPS)
+					note.y = strumNote.y + ((curStep - note.data.step) * note.height);
+
 				if (note.y < strumNote.y)
 					note.alpha = 0.3;
 				else
 					note.alpha = 1.0;
 			}
-		}
-
-		if (debugMode)
-		{
-			debugModeFunctions();
 		}
 	}
 
@@ -117,9 +125,8 @@ class PlayState extends MusicBeatState
 
 				noteData.notes = ['Seconds: ${FlxG.sound.music.time / 1000}'];
 			}
-			if (SONG.timeformat == BEATS_AND_STEPS)
+			if (SONG.timeformat == STEPS)
 			{
-				noteData.beat = curBeat;
 				noteData.step = curStep;
 			}
 
