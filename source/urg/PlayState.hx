@@ -1,5 +1,7 @@
 package urg;
 
+import flixel.group.FlxSpriteGroup.FlxTypedSpriteGroup;
+import flixel.group.FlxGroup.FlxTypedGroup;
 import lime.system.Clipboard;
 import haxe.Json;
 import flixel.tweens.FlxEase;
@@ -26,33 +28,44 @@ class PlayState extends MusicBeatState
 	public var SONG:SongData;
 
 	public var strumNote:NoteSprite;
+	public var notes:FlxTypedSpriteGroup<NoteSprite>;
 
 	override public function create()
 	{
-		FlxG.sound.playMusic(AssetPaths.music('songs/Test'));
 		SONG = Song.loadSong('Test');
 
 		if (SONG == null)
-		{
 			throw 'Where\'s the song?';
-		}
+
+		FlxG.sound.playMusic(AssetPaths.music('songs/Test'));
 
 		#if debug
 		#if hscript
 		ConsoleUtil.registerObject('SONG', SONG);
-		ConsoleUtil.registerFunction('traceSONG', function() {
+		ConsoleUtil.registerFunction('traceSONG', function()
+		{
 			trace(Json.stringify(SONG));
 		});
-		ConsoleUtil.registerFunction('copySONG', function() {
+		ConsoleUtil.registerFunction('copySONG', function()
+		{
 			Clipboard.text = Json.stringify(SONG, '\t');
 		});
 		#end
 		#end
 
-		strumNote = new NoteSprite();
+		strumNote = new NoteSprite(true);
 		strumNote.screenCenter();
 		strumNote.y = 50;
 		add(strumNote);
+
+		notes = new FlxTypedSpriteGroup<NoteSprite>();
+		add(notes);
+
+		for (note in SONG.notes)
+		{
+			var noteSpr:NoteSprite = new NoteSprite(false, note);
+			notes.add(noteSpr);
+		}
 
 		songStarted = true;
 
@@ -74,6 +87,18 @@ class PlayState extends MusicBeatState
 
 		Conductor.songPosition = FlxG.sound.music.time;
 
+		if (SONG.timeformat == MILLISECONDS)
+		{
+			for (note in notes.members)
+			{
+				note.y = strumNote.y + ((Conductor.songPosition - note.data.ms) * note.height);
+				if (note.y < strumNote.y)
+					note.alpha = 0.3;
+				else
+					note.alpha = 1.0;
+			}
+		}
+
 		if (debugMode)
 		{
 			debugModeFunctions();
@@ -90,9 +115,7 @@ class PlayState extends MusicBeatState
 			{
 				noteData.ms = FlxG.sound.music.time;
 
-				noteData.notes = [
-					'Seconds: ${FlxG.sound.music.time / 1000}'
-				];
+				noteData.notes = ['Seconds: ${FlxG.sound.music.time / 1000}'];
 			}
 			if (SONG.timeformat == BEATS_AND_STEPS)
 			{
