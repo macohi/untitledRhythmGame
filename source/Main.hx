@@ -1,3 +1,4 @@
+import macohi.funkin.koya.backend.AssetPaths;
 import flixel.FlxGame;
 import openfl.display.Sprite;
 
@@ -7,5 +8,7 @@ class Main extends Sprite
 	{
 		super();
 		addChild(new FlxGame(0, 0, PlayState));
+
+		AssetPaths.soundExt = 'mp3';
 	}
 }
