@@ -74,6 +74,11 @@ class PlayState extends MusicBeatState
 
 		songStarted = true;
 
+		if (debugMode)
+		{
+			FlxG.sound.music.pause();
+		}
+
 		super.create();
 	}
 
