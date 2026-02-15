@@ -134,10 +134,20 @@ class PlayState extends MusicBeatState
 			if (SONG.timeformat == STEPS)
 				note.y = strumNote.y + ((curStep - note.data.step) * note.height);
 
-			if (note.y < strumNote.y)
-				note.alpha = 0.3;
+			if (debugMode)
+			{
+				if (note.y < strumNote.y)
+					note.color = FlxColor.LIME;
+				else
+					note.color = FlxColor.WHITE;
+			}
 			else
-				note.alpha = 1.0;
+			{
+				if (note.y < strumNote.y)
+					note.alpha = 0.3;
+				else
+					note.alpha = 1.0;
+			}
 		}
 	}
 
