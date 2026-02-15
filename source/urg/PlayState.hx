@@ -205,9 +205,9 @@ class PlayState extends MusicBeatState
 		if (FlxG.keys.anyPressed([W, UP, S, DOWN]))
 		{
 			if (FlxG.keys.anyPressed([W, UP]))
-				FlxG.sound.music.time -= timeOffsetSeconds * 1000;
-			if (FlxG.keys.anyPressed([S, DOWN]))
 				FlxG.sound.music.time += timeOffsetSeconds * 1000;
+			if (FlxG.keys.anyPressed([S, DOWN]))
+				FlxG.sound.music.time -= timeOffsetSeconds * 1000;
 
 			if (FlxG.sound.music.time < 0)
 				FlxG.sound.music.time = 0;
