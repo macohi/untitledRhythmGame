@@ -1,11 +1,11 @@
 package urg.objects;
 
-import flixel.util.FlxSort;
-import flixel.util.FlxColor;
-import urg.data.save.URGSave;
-import macohi.funkin.pre_vslice.Conductor;
-import urg.data.song.SongData;
 import flixel.group.FlxSpriteGroup.FlxTypedSpriteGroup;
+import flixel.util.FlxColor;
+import flixel.util.FlxSort;
+import macohi.funkin.pre_vslice.Conductor;
+import urg.data.save.URGSave;
+import urg.data.song.SongData;
 
 class NoteGroup extends FlxTypedSpriteGroup<NoteSprite>
 {

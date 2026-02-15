@@ -1,7 +1,7 @@
 package urg.objects;
 
-import urg.data.song.SongData.NoteData;
 import macohi.overrides.MSprite;
+import urg.data.song.SongData.NoteData;
 
 class NoteSprite extends MSprite
 {

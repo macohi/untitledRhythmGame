@@ -1,7 +1,6 @@
-import urg.InitState;
-import macohi.funkin.koya.backend.AssetPaths;
 import flixel.FlxGame;
 import openfl.display.Sprite;
+import urg.InitState;
 
 class Main extends Sprite
 {

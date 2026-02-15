@@ -1,9 +1,8 @@
 package urg.data.song;
 
-import macohi.util.WindowUtil;
 import haxe.Json;
-import macohi.funkin.koya.backend.AssetPaths;
 import macohi.funkin.koya.backend.KoyaAssets;
+import macohi.util.WindowUtil;
 
 using macohi.funkin.vslice.util.AnsiUtil;
 
@@ -36,7 +35,9 @@ class Song
 
 			if (jsonData != null)
 				songData = jsonData;
-		} else {
+		}
+		else
+		{
 			trace(' WARNING '.warning() + ' Missing song JSON: ${song.toLowerCase()}');
 		}
 

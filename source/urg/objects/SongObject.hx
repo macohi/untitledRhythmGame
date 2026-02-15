@@ -1,12 +1,12 @@
 package urg.objects;
 
+import flixel.system.debug.console.ConsoleUtil;
+import haxe.Json;
+import lime.system.Clipboard;
+import macohi.funkin.koya.backend.AssetPaths;
+import macohi.overrides.MSound;
 import urg.data.song.Song;
 import urg.data.song.SongData;
-import macohi.overrides.MSound;
-import macohi.funkin.koya.backend.AssetPaths;
-import lime.system.Clipboard;
-import haxe.Json;
-import flixel.system.debug.console.ConsoleUtil;
 
 class SongObject
 {

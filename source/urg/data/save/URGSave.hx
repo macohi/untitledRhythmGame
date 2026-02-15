@@ -1,7 +1,7 @@
 package urg.data.save;
 
-import macohi.save.SaveField;
 import macohi.save.Save;
+import macohi.save.SaveField;
 
 class URGSave extends Save
 {
@@ -17,7 +17,8 @@ class URGSave extends Save
 		init('UntitledRhythmGame');
 	}
 
-	override function initFields() {
+	override function initFields()
+	{
 		super.initFields();
 
 		downscroll = new SaveField('downscroll', false, 'Downscroll');
