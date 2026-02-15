@@ -17,7 +17,7 @@ using macohi.util.TimeUtil;
 
 class PlayState extends MusicBeatState
 {
-	public static var INPUT_WINDOW_MS:Float = 0.3.convert_s_to_ms();
+	public static var INPUT_WINDOW_MS:Float = 0.1.convert_s_to_ms();
 
 	public function goodNoteHit() {}
 
