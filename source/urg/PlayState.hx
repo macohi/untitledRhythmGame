@@ -67,7 +67,7 @@ class PlayState extends MusicBeatState
 		waveform = new MWaveform(0, 0, 256, FlxG.height, FlxColor.WHITE, FlxColor.TRANSPARENT);
 		add(waveform);
 
-		waveform.loadDataFromFlxSound(SONG.inst);
+		waveform.loadDataFromFlxSound(cast SONG.inst);
 
 		waveform.waveformDuration = 5.convert_s_to_ms();
 

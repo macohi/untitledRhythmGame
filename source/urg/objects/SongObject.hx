@@ -39,7 +39,8 @@ class SongObject
 		#end
 		#end
 
-		inst = new MSound().loadEmbedded(AssetPaths.music('songs/$song'));
+		inst = new MSound();
+		inst.loadEmbedded(AssetPaths.music('songs/$song'));
 		inst.play(true);
 
 		if (this.debugMode)
