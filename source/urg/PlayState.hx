@@ -1,5 +1,6 @@
 package urg;
 
+import macohi.overrides.MSprite;
 import flixel.math.FlxMath;
 import macohi.overrides.MText;
 import urg.data.save.URGSave;
@@ -35,6 +36,10 @@ class PlayState extends MusicBeatState
 
 	public var songTimeText:MText;
 
+	public var defaultCamZoom:Float = 1.0;
+
+	public var strumline:MSprite;
+
 	override public function create()
 	{
 		SONG = Song.loadSong('Test');
@@ -56,6 +61,11 @@ class PlayState extends MusicBeatState
 		#end
 		#end
 
+		strumline = new MSprite().makeGraphic(FlxG.width, 8);
+		add(strumline);
+		strumline.visible = false;
+		strumline.scrollFactor.set();
+
 		strumNote = new NoteSprite(true);
 		strumNote.screenCenter();
 		add(strumNote);
@@ -67,6 +77,7 @@ class PlayState extends MusicBeatState
 		updateDownscrollValues();
 
 		songTimeText = new MText(10, 10).makeText('Song Time: 0.00 / 0.00', 16);
+		songTimeText.scrollFactor.set();
 		add(songTimeText);
 
 		FlxG.sound.playMusic(AssetPaths.music('songs/Test'));
@@ -181,6 +192,13 @@ class PlayState extends MusicBeatState
 		}
 	}
 
+	public function resetCamMusicScrubbing()
+	{
+		FlxG.camera.zoom = defaultCamZoom;
+		strumline.visible = false;
+		FlxG.camera.y = 0;
+	}
+
 	public function debugModeFunctions()
 	{
 		if (FlxG.keys.justReleased.D)
@@ -194,7 +212,11 @@ class PlayState extends MusicBeatState
 			if (FlxG.sound.music.playing)
 				FlxG.sound.music.pause();
 			else
+			{
 				FlxG.sound.music.resume();
+
+				resetCamMusicScrubbing();
+			}
 		}
 
 		var timeOffsetSeconds = 1 / 500;
@@ -205,15 +227,35 @@ class PlayState extends MusicBeatState
 		if (FlxG.keys.anyPressed([W, UP, S, DOWN]))
 		{
 			if (FlxG.keys.anyPressed([W, UP]))
+			{
 				FlxG.sound.music.time += timeOffsetSeconds * 1000;
+
+				if (FlxG.keys.pressed.CONTROL && !FlxG.sound.music.playing)
+					FlxG.camera.y -= timeOffsetSeconds * 1000;
+			}
 			if (FlxG.keys.anyPressed([S, DOWN]))
+			{
 				FlxG.sound.music.time -= timeOffsetSeconds * 1000;
+
+				if (FlxG.keys.pressed.CONTROL && !FlxG.sound.music.playing)
+					FlxG.camera.y += timeOffsetSeconds * 1000;
+			}
 
 			if (FlxG.sound.music.time < 0)
 				FlxG.sound.music.time = 0;
 
 			if (FlxG.sound.music.time > FlxG.sound.music.length)
 				FlxG.sound.music.time = FlxG.sound.music.length;
+		}
+
+		if (FlxG.keys.justPressed.CONTROL)
+		{
+			FlxG.camera.zoom = 0.5;
+			strumline.visible = true;
+		}
+		if (FlxG.keys.justReleased.CONTROL && strumline.visible)
+		{
+			resetCamMusicScrubbing();
 		}
 
 		if (FlxG.keys.justPressed.SPACE)
