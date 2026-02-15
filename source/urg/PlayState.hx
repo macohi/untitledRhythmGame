@@ -1,5 +1,6 @@
 package urg;
 
+import urg.objects.NoteSprite;
 import macohi.funkin.pre_vslice.Conductor;
 #if debug
 #if hscript
@@ -19,6 +20,8 @@ class PlayState extends MusicBeatState
 
 	public var SONG:SongData;
 
+	public var centerNote:NoteSprite;
+
 	override public function create()
 	{
 		FlxG.sound.playMusic(AssetPaths.music('songs/Test'));
@@ -35,6 +38,10 @@ class PlayState extends MusicBeatState
 		#end
 		#end
 
+		centerNote = new NoteSprite();
+		centerNote.screenCenter();
+		add(centerNote);
+
 		songStarted = true;
 
 		super.create();
@@ -46,7 +53,7 @@ class PlayState extends MusicBeatState
 
 		if (!songStarted)
 			return;
-		
+
 		if (FlxG.sound.music == null)
 		{
 			songStarted = false;
