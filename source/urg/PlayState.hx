@@ -51,6 +51,10 @@ class PlayState extends MusicBeatState
 		notes = new NoteGroup();
 		add(notes);
 
+		notes.strumNote = strumNote;
+		notes.debugMode = debugMode;
+		notes.songData = SONG.data;
+
 		notes.loadNotes();
 		updateDownscrollValues();
 
@@ -59,10 +63,6 @@ class PlayState extends MusicBeatState
 		add(songTimeText);
 
 		super.create();
-
-		notes.strumNote = strumNote;
-		notes.debugMode = debugMode;
-		notes.songData = SONG.data;
 
 		waveform = new MWaveform(0, 0, 256, FlxG.height, FlxColor.WHITE, FlxColor.TRANSPARENT);
 		add(waveform);
@@ -99,7 +99,7 @@ class PlayState extends MusicBeatState
 		}
 
 		Conductor.songPosition = SONG.inst.time;
-		
+
 		songTimeText.text = 'Song Position: ';
 		songTimeText.text += '${Conductor.songPosition.convert_ms_to_s().round()} s';
 		songTimeText.text += ' / ';
