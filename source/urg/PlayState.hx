@@ -110,7 +110,8 @@ class PlayState extends MusicBeatState
 
 	public function loadNotes()
 	{
-		SONG.notes.sort((struct1, struct2) -> {
+		SONG.notes.sort((struct1, struct2) ->
+		{
 			var s1v = 0.0;
 			var s2v = 0.0;
 
@@ -125,8 +126,8 @@ class PlayState extends MusicBeatState
 				s1v = struct1.step;
 				s2v = struct2.step;
 			}
-			
-			return FlxSort.byValues(FlxSort.ASCENDING, s1v,s2v);
+
+			return FlxSort.byValues(FlxSort.ASCENDING, s1v, s2v);
 		});
 
 		for (note in SONG.notes)
@@ -207,7 +208,7 @@ class PlayState extends MusicBeatState
 
 	public function debugModeFunctions()
 	{
-		if (FlxG.keys.anyJustPressed([Q,E]))
+		if (FlxG.keys.anyJustPressed([Q, E]))
 		{
 			if (FlxG.keys.justPressed.Q)
 				FlxG.camera.zoom -= 0.1;
@@ -268,12 +269,34 @@ class PlayState extends MusicBeatState
 				noteData.step = curStep;
 			}
 
-			trace('Added note: $noteData');
+			var canAdd:Bool = true;
 
+			for (note in notes)
+			{
+				if (!canAdd) continue;
+
+				if (SONG.timeformat == STEPS)
+					if (noteData.step - note.data.step < 1)
+					{
+						canAdd = false;
+						trace('Overlapping with a note.');
+					}
+
+				if (SONG.timeformat == MILLISECONDS)
+					if (noteData.step - note.data.step < (9022 - 8958))
+					{
+						canAdd = false;
+						trace('Overlapping with a note.');
+					}
+			}
+
+			if (!canAdd)
+				return;
+
+			trace('Added note: $noteData');
 			SONG.notes.push(noteData);
 
 			highlightStrum(FlxColor.RED);
-
 			reloadNotes();
 		}
 	}
