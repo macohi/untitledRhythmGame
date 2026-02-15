@@ -1,10 +1,10 @@
 package urg.objects;
 
+import flixel.sound.FlxSound;
 import flixel.system.debug.console.ConsoleUtil;
 import haxe.Json;
 import lime.system.Clipboard;
 import macohi.funkin.koya.backend.AssetPaths;
-import macohi.overrides.MSound;
 import urg.data.song.Song;
 import urg.data.song.SongData;
 
@@ -14,7 +14,7 @@ class SongObject
 
 	public var debugMode:Bool = false;
 
-	public var inst:MSound;
+	public var inst:FlxSound;
 
 	public function new(song:String, ?debugMode:Bool = false)
 	{
@@ -39,8 +39,7 @@ class SongObject
 		#end
 		#end
 
-		inst = new MSound();
-		inst.loadEmbedded(AssetPaths.music('songs/$song'));
+		inst = new FlxSound().loadEmbedded(AssetPaths.music('songs/$song'));
 		inst.play(true);
 
 		if (this.debugMode)

@@ -32,14 +32,12 @@ class PlayState extends MusicBeatState
 	override public function create()
 	{
 		SONG = new SongObject('Test', debugMode);
-		SONG.inst.onFinish.add(function()
+		SONG.inst.onComplete = function()
 		{
 			songStarted = false;
-		});
-		SONG.inst.onStart.add(function()
-		{
-			songStarted = true;
-		});
+		};
+		
+		songStarted = true;
 
 		strumNote = new NoteSprite(true);
 		strumNote.screenCenter();
