@@ -285,7 +285,7 @@ class PlayState extends MusicBeatState
 
 				if (SONG.timeformat == MILLISECONDS)
 				{
-					var msDiff = new NoteSprite().height + 10;
+					var msDiff = new NoteSprite().height;
 
 					if (noteData.ms - note.data.ms < msDiff)
 					{
