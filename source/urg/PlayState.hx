@@ -1,5 +1,8 @@
 package urg;
 
+import flixel.tweens.FlxEase;
+import flixel.tweens.FlxTween;
+import flixel.util.FlxColor;
 import urg.objects.NoteSprite;
 import macohi.funkin.pre_vslice.Conductor;
 #if debug
@@ -82,6 +85,10 @@ class PlayState extends MusicBeatState
 			trace('Added note: $noteData');
 
 			SONG.notes.push(noteData);
+
+			FlxTween.color(centerNote, 1, FlxColor.RED, FlxColor.WHITE, {
+				ease: FlxEase.quadInOut
+			});
 		}
 	}
 }
