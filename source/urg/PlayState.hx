@@ -171,7 +171,7 @@ class PlayState extends MusicBeatState
 
 	public function debugModeFunctions()
 	{
-		if (FlxG.keys.justReleased.ENTER)
+		if (FlxG.keys.justReleased.D)
 		{
 			URGSave.instance.downscroll.set(!URGSave.instance.downscroll.get());
 			updateDownscrollValues();
