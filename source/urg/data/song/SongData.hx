@@ -6,7 +6,7 @@ typedef SongData =
 {
 	bpm:Float,
 	notes:Array<NoteData>,
-	timeformat:SongTimeformat,
+	?timeformat:SongTimeformat,
 }
 
 typedef NoteData =
