@@ -1,5 +1,6 @@
 package urg;
 
+import urg.objects.NoteGroup;
 import flixel.util.FlxSort;
 import macohi.overrides.MSprite;
 import flixel.math.FlxMath;
@@ -33,7 +34,7 @@ class PlayState extends MusicBeatState
 	public var SONG:SongData;
 
 	public var strumNote:NoteSprite;
-	public var notes:FlxTypedSpriteGroup<NoteSprite>;
+	public var notes:NoteGroup;
 
 	public var songTimeText:MText;
 
@@ -64,7 +65,7 @@ class PlayState extends MusicBeatState
 		strumNote.screenCenter();
 		add(strumNote);
 
-		notes = new FlxTypedSpriteGroup<NoteSprite>();
+		notes = new NoteGroup();
 		add(notes);
 
 		loadNotes();
@@ -83,6 +84,10 @@ class PlayState extends MusicBeatState
 		}
 
 		super.create();
+
+		notes.strumNote = strumNote;
+		notes.debugMode = debugMode;
+		notes.songData = SONG;
 	}
 
 	public function updateDownscrollValues()
@@ -164,46 +169,7 @@ class PlayState extends MusicBeatState
 			debugModeFunctions();
 		}
 
-		for (note in notes.members)
-		{
-			if (note == null)
-			{
-				notes.members.remove(note);
-				continue;
-			}
-
-			var YOffset:Float = 0;
-
-			if (SONG.timeformat == MILLISECONDS)
-				YOffset = ((Conductor.songPosition - note.data.ms));
-			if (SONG.timeformat == STEPS)
-				YOffset = ((curStep - note.data.step) * note.height);
-
-			// + actually goes down in flixel lol
-			var passedStrum:Bool = (note.y > strumNote.y);
-			if (!URGSave.instance.downscroll.get())
-			{
-				YOffset = -YOffset;
-				passedStrum = (note.y < strumNote.y);
-			}
-
-			note.y = strumNote.y + YOffset;
-
-			if (debugMode)
-			{
-				if (passedStrum)
-					note.color = FlxColor.LIME;
-				else
-					note.color = FlxColor.RED;
-			}
-			else
-			{
-				if (passedStrum)
-					note.alpha = 0.3;
-				else
-					note.alpha = 1.0;
-			}
-		}
+		notes.curStep = curStep;
 	}
 
 	public function debugModeFunctions()
