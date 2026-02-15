@@ -273,7 +273,8 @@ class PlayState extends MusicBeatState
 
 			for (note in notes)
 			{
-				if (!canAdd) continue;
+				if (!canAdd)
+					continue;
 
 				if (SONG.timeformat == STEPS)
 					if (noteData.step - note.data.step < 1)
@@ -283,11 +284,15 @@ class PlayState extends MusicBeatState
 					}
 
 				if (SONG.timeformat == MILLISECONDS)
-					if (noteData.step - note.data.step < (9022 - 8958))
+				{
+					var msDiff = 1000;
+
+					if (noteData.ms - note.data.ms < msDiff)
 					{
 						canAdd = false;
-						trace('Overlapping with a note.');
+						trace('Overlapping with a note. (${noteData.ms - note.data.ms} < $msDiff)');
 					}
+				}
 			}
 
 			if (!canAdd)
