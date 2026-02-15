@@ -1,5 +1,7 @@
-package urg.data.song;
+package urg.objects;
 
+import urg.data.song.Song;
+import urg.data.song.SongData;
 import macohi.overrides.MSound;
 import macohi.funkin.koya.backend.AssetPaths;
 import lime.system.Clipboard;

@@ -1,6 +1,6 @@
 package urg;
 
-import urg.data.song.SongObject;
+import urg.objects.SongObject;
 import urg.objects.NoteGroup;
 import macohi.overrides.MText;
 import urg.data.save.URGSave;
