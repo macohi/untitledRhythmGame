@@ -185,14 +185,21 @@ class PlayState extends MusicBeatState
 		}
 	}
 
-	public function resetCamMusicScrubbing()
-	{
-		FlxG.camera.zoom = defaultCamZoom;
-		FlxG.camera.y = 0;
-	}
-
 	public function debugModeFunctions()
 	{
+		if (FlxG.keys.anyJustPressed([Q,E]))
+		{
+			if (FlxG.keys.justPressed.Q)
+				FlxG.camera.zoom -= 0.1;
+			if (FlxG.keys.justPressed.E)
+				FlxG.camera.zoom += 0.1;
+
+			if (FlxG.camera.zoom < 0.5)
+				FlxG.camera.zoom = 0.5;
+			if (FlxG.camera.zoom > 1.0)
+				FlxG.camera.zoom = 1.0;
+		}
+
 		if (FlxG.keys.justReleased.D)
 		{
 			URGSave.instance.downscroll.set(!URGSave.instance.downscroll.get());
@@ -204,11 +211,7 @@ class PlayState extends MusicBeatState
 			if (FlxG.sound.music.playing)
 				FlxG.sound.music.pause();
 			else
-			{
 				FlxG.sound.music.resume();
-
-				resetCamMusicScrubbing();
-			}
 		}
 
 		var timeOffsetSeconds = 1 / 500;
@@ -219,34 +222,15 @@ class PlayState extends MusicBeatState
 		if (FlxG.keys.anyPressed([W, UP, S, DOWN]))
 		{
 			if (FlxG.keys.anyPressed([W, UP]))
-			{
-				if (FlxG.keys.pressed.CONTROL && !FlxG.sound.music.playing)
-					FlxG.camera.y -= timeOffsetSeconds * 1000;
-				else
-					FlxG.sound.music.time += timeOffsetSeconds * 1000;
-			}
+				FlxG.sound.music.time += timeOffsetSeconds * 1000;
 			if (FlxG.keys.anyPressed([S, DOWN]))
-			{
-				if (FlxG.keys.pressed.CONTROL && !FlxG.sound.music.playing)
-					FlxG.camera.y += timeOffsetSeconds * 1000;
-				else
-					FlxG.sound.music.time -= timeOffsetSeconds * 1000;
-			}
+				FlxG.sound.music.time -= timeOffsetSeconds * 1000;
 
 			if (FlxG.sound.music.time < 0)
 				FlxG.sound.music.time = 0;
 
 			if (FlxG.sound.music.time > FlxG.sound.music.length)
 				FlxG.sound.music.time = FlxG.sound.music.length;
-		}
-
-		if (FlxG.keys.justPressed.CONTROL)
-		{
-			FlxG.camera.zoom = 0.5;
-		}
-		if (FlxG.keys.justReleased.CONTROL && FlxG.camera.zoom != defaultCamZoom)
-		{
-			resetCamMusicScrubbing();
 		}
 
 		if (FlxG.keys.justPressed.SPACE)
