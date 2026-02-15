@@ -2,212 +2,304 @@
 	"bpm": 100,
 	"notes": [
 		{
-			"ms": 0,
-			"notes": ["Seconds: 0"]
-		},
-		{
-			"ms": 66,
-			"notes": ["Seconds: 0.066"]
-		},
-		{
 			"ms": 262,
-			"notes": ["Seconds: 0.262"]
+			"notes": [
+				"Seconds: 0.262"
+			]
 		},
 		{
 			"ms": 526,
-			"notes": ["Seconds: 0.526"]
+			"notes": [
+				"Seconds: 0.526"
+			]
 		},
 		{
 			"ms": 766,
-			"notes": ["Seconds: 0.766"]
+			"notes": [
+				"Seconds: 0.766"
+			]
 		},
 		{
 			"ms": 1054,
-			"notes": ["Seconds: 1.054"]
+			"notes": [
+				"Seconds: 1.054"
+			]
 		},
 		{
 			"ms": 1342,
-			"notes": ["Seconds: 1.342"]
+			"notes": [
+				"Seconds: 1.342"
+			]
 		},
 		{
 			"ms": 1614,
-			"notes": ["Seconds: 1.614"]
+			"notes": [
+				"Seconds: 1.614"
+			]
 		},
 		{
 			"ms": 1870,
-			"notes": ["Seconds: 1.87"]
+			"notes": [
+				"Seconds: 1.87"
+			]
 		},
 		{
 			"ms": 2086,
-			"notes": ["Seconds: 2.086"]
+			"notes": [
+				"Seconds: 2.086"
+			]
 		},
 		{
 			"ms": 2294,
-			"notes": ["Seconds: 2.294"]
+			"notes": [
+				"Seconds: 2.294"
+			]
 		},
 		{
 			"ms": 2478,
-			"notes": ["Seconds: 2.478"]
+			"notes": [
+				"Seconds: 2.478"
+			]
 		},
 		{
 			"ms": 2614,
-			"notes": ["Seconds: 2.614"]
+			"notes": [
+				"Seconds: 2.614"
+			]
 		},
 		{
 			"ms": 2734,
-			"notes": ["Seconds: 2.734"]
+			"notes": [
+				"Seconds: 2.734"
+			]
 		},
 		{
 			"ms": 2862,
-			"notes": ["Seconds: 2.862"]
+			"notes": [
+				"Seconds: 2.862"
+			]
 		},
 		{
 			"ms": 2950,
-			"notes": ["Seconds: 2.95"]
+			"notes": [
+				"Seconds: 2.95"
+			]
 		},
 		{
 			"ms": 3054,
-			"notes": ["Seconds: 3.054"]
+			"notes": [
+				"Seconds: 3.054"
+			]
 		},
 		{
 			"ms": 3142,
-			"notes": ["Seconds: 3.142"]
+			"notes": [
+				"Seconds: 3.142"
+			]
 		},
 		{
 			"ms": 3230,
-			"notes": ["Seconds: 3.23"]
+			"notes": [
+				"Seconds: 3.23"
+			]
 		},
 		{
 			"ms": 3318,
-			"notes": ["Seconds: 3.318"]
+			"notes": [
+				"Seconds: 3.318"
+			]
 		},
 		{
 			"ms": 3406,
-			"notes": ["Seconds: 3.406"]
+			"notes": [
+				"Seconds: 3.406"
+			]
 		},
 		{
 			"ms": 3566,
-			"notes": ["Seconds: 3.566"]
+			"notes": [
+				"Seconds: 3.566"
+			]
 		},
 		{
 			"ms": 3654,
-			"notes": ["Seconds: 3.654"]
+			"notes": [
+				"Seconds: 3.654"
+			]
 		},
 		{
 			"ms": 3790,
-			"notes": ["Seconds: 3.79"]
+			"notes": [
+				"Seconds: 3.79"
+			]
 		},
 		{
 			"ms": 3886,
-			"notes": ["Seconds: 3.886"]
+			"notes": [
+				"Seconds: 3.886"
+			]
 		},
 		{
 			"ms": 3998,
-			"notes": ["Seconds: 3.998"]
+			"notes": [
+				"Seconds: 3.998"
+			]
 		},
 		{
 			"ms": 4102,
-			"notes": ["Seconds: 4.102"]
+			"notes": [
+				"Seconds: 4.102"
+			]
 		},
 		{
 			"ms": 4206,
-			"notes": ["Seconds: 4.206"]
+			"notes": [
+				"Seconds: 4.206"
+			]
 		},
 		{
 			"ms": 4374,
-			"notes": ["Seconds: 4.374"]
+			"notes": [
+				"Seconds: 4.374"
+			]
 		},
 		{
 			"ms": 4438,
-			"notes": ["Seconds: 4.438"]
+			"notes": [
+				"Seconds: 4.438"
+			]
 		},
 		{
 			"ms": 4502,
-			"notes": ["Seconds: 4.502"]
+			"notes": [
+				"Seconds: 4.502"
+			]
 		},
 		{
 			"ms": 4590,
-			"notes": ["Seconds: 4.59"]
+			"notes": [
+				"Seconds: 4.59"
+			]
 		},
 		{
 			"ms": 4654,
-			"notes": ["Seconds: 4.654"]
+			"notes": [
+				"Seconds: 4.654"
+			]
 		},
 		{
 			"ms": 4758,
-			"notes": ["Seconds: 4.758"]
+			"notes": [
+				"Seconds: 4.758"
+			]
 		},
 		{
 			"ms": 4830,
-			"notes": ["Seconds: 4.83"]
+			"notes": [
+				"Seconds: 4.83"
+			]
 		},
 		{
 			"ms": 4942,
-			"notes": ["Seconds: 4.942"]
+			"notes": [
+				"Seconds: 4.942"
+			]
 		},
 		{
 			"ms": 5046,
-			"notes": ["Seconds: 5.046"]
+			"notes": [
+				"Seconds: 5.046"
+			]
 		},
 		{
 			"ms": 5150,
-			"notes": ["Seconds: 5.15"]
+			"notes": [
+				"Seconds: 5.15"
+			]
 		},
 		{
 			"ms": 5254,
-			"notes": ["Seconds: 5.254"]
+			"notes": [
+				"Seconds: 5.254"
+			]
 		},
 		{
 			"ms": 5318,
-			"notes": ["Seconds: 5.318"]
+			"notes": [
+				"Seconds: 5.318"
+			]
 		},
 		{
 			"ms": 5430,
-			"notes": ["Seconds: 5.43"]
+			"notes": [
+				"Seconds: 5.43"
+			]
 		},
 		{
 			"ms": 5526,
-			"notes": ["Seconds: 5.526"]
+			"notes": [
+				"Seconds: 5.526"
+			]
 		},
 		{
 			"ms": 5630,
-			"notes": ["Seconds: 5.63"]
+			"notes": [
+				"Seconds: 5.63"
+			]
 		},
 		{
 			"ms": 5694,
-			"notes": ["Seconds: 5.694"]
+			"notes": [
+				"Seconds: 5.694"
+			]
 		},
 		{
 			"ms": 5758,
-			"notes": ["Seconds: 5.758"]
+			"notes": [
+				"Seconds: 5.758"
+			]
 		},
 		{
 			"ms": 5878,
-			"notes": ["Seconds: 5.878"]
+			"notes": [
+				"Seconds: 5.878"
+			]
 		},
 		{
 			"ms": 5982,
-			"notes": ["Seconds: 5.982"]
+			"notes": [
+				"Seconds: 5.982"
+			]
 		},
 		{
 			"ms": 6046,
-			"notes": ["Seconds: 6.046"]
+			"notes": [
+				"Seconds: 6.046"
+			]
 		},
 		{
 			"ms": 6166,
-			"notes": ["Seconds: 6.166"]
+			"notes": [
+				"Seconds: 6.166"
+			]
 		},
 		{
 			"ms": 6230,
-			"notes": ["Seconds: 6.23"]
+			"notes": [
+				"Seconds: 6.23"
+			]
 		},
 		{
 			"ms": 6294,
-			"notes": ["Seconds: 6.294"]
+			"notes": [
+				"Seconds: 6.294"
+			]
 		},
 		{
 			"ms": 6414,
-			"notes": ["Seconds: 6.414"]
+			"notes": [
+				"Seconds: 6.414"
+			]
 		}
 	],
 	"timeformat": "ms"
