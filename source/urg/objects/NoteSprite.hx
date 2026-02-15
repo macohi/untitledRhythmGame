@@ -8,6 +8,8 @@ class NoteSprite extends MSprite
 	public var strumline:Bool = false;
 	public var data:NoteData = null;
 
+	public var late:Bool = false;
+
 	override public function new(strumline:Bool = false, data:NoteData = null)
 	{
 		super();

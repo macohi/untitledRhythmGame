@@ -20,6 +20,7 @@ class NoteGroup extends FlxTypedSpriteGroup<NoteSprite>
 
 	public var goodNoteHit:FlxSignal = new FlxSignal();
 
+	public var missNote:FlxSignal = new FlxSignal();
 	public var badNoteHit:FlxSignal = new FlxSignal();
 	public var ghostNoteHit:FlxSignal = new FlxSignal();
 
@@ -120,7 +121,7 @@ class NoteGroup extends FlxTypedSpriteGroup<NoteSprite>
 				YOffset = -YOffset;
 
 			note.y = strumNote.y + YOffset;
-			
+
 			// + actually goes down in flixel lol
 			var passedStrum:Bool = (note.y > strumNote.y);
 			var yoMin:Float = -note.height * 16;
@@ -146,6 +147,12 @@ class NoteGroup extends FlxTypedSpriteGroup<NoteSprite>
 				if (passedStrum)
 				{
 					note.alpha = 0.3;
+
+					if (!note.late)
+					{
+						note.late = true;
+						missNote.dispatch();
+					}
 
 					if (!URGSave.instance.downscroll.get() && note.y < yoMin)
 						destroyNote = true;

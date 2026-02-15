@@ -60,6 +60,9 @@ class PlayState extends MusicBeatState
 		notes.badNoteHit.add(function() {
 			trace('bad');
 		});
+		notes.missNote.add(function() {
+			trace('miss');
+		});
 		notes.goodNoteHit.add(function() {
 			trace('good');
 		});
