@@ -1,5 +1,6 @@
 package urg.objects;
 
+import flixel.FlxG;
 import flixel.sound.FlxSound;
 import flixel.system.debug.console.ConsoleUtil;
 import haxe.Json;
@@ -13,8 +14,6 @@ class SongObject
 	public var data:SongData;
 
 	public var debugMode:Bool = false;
-
-	public var inst:FlxSound;
 
 	public function new(song:String, ?debugMode:Bool = false)
 	{
@@ -39,12 +38,11 @@ class SongObject
 		#end
 		#end
 
-		inst = new FlxSound().loadEmbedded(AssetPaths.music('songs/$song'));
-		inst.play(true);
+		FlxG.sound.playMusic(AssetPaths.music('songs/$song'));
 
 		if (this.debugMode)
 		{
-			inst.pause();
+			FlxG.sound.music.pause();
 		}
 	}
 }

@@ -32,7 +32,7 @@ class PlayState extends MusicBeatState
 	override public function create()
 	{
 		SONG = new SongObject('Test', debugMode);
-		SONG.inst.onComplete = function()
+		FlxG.sound.music.onComplete = function()
 		{
 			songStarted = false;
 		};
@@ -48,7 +48,7 @@ class PlayState extends MusicBeatState
 
 		notes.strumNote = strumNote;
 		notes.debugMode = debugMode;
-		notes.songData = SONG.data;
+		notes.song = SONG;
 
 		notes.loadNotes();
 		updateDownscrollValues();
@@ -77,24 +77,26 @@ class PlayState extends MusicBeatState
 		if (!songStarted)
 			return;
 
-		if (SONG.inst == null)
+		if (FlxG.sound.music == null)
 		{
 			songStarted = false;
 			return;
 		}
 
-		Conductor.songPosition = SONG.inst.time;
+		Conductor.songPosition = FlxG.sound.music.time;
 
 		songTimeText.text = 'Song Position: ';
 		songTimeText.text += '${Conductor.songPosition.convert_ms_to_s().round()} s';
 		songTimeText.text += ' / ';
-		songTimeText.text += '${SONG.inst.length.convert_ms_to_s().round()} s';
+		songTimeText.text += '${FlxG.sound.music.length.convert_ms_to_s().round()} s';
 
 		if (debugMode)
 		{
 			debugModeFunctions();
 		}
+
 		notes.curStep = curStep;
+		notes.update(elapsed);
 	}
 
 	public function debugModeFunctions()
@@ -120,10 +122,10 @@ class PlayState extends MusicBeatState
 
 		if (FlxG.keys.justReleased.ENTER)
 		{
-			if (SONG.inst.playing)
-				SONG.inst.pause();
+			if (FlxG.sound.music.playing)
+				FlxG.sound.music.pause();
 			else
-				SONG.inst.resume();
+				FlxG.sound.music.resume();
 		}
 
 		var timeOffsetSeconds = 1 / 500;
@@ -134,26 +136,26 @@ class PlayState extends MusicBeatState
 		if (FlxG.keys.anyPressed([W, UP, S, DOWN]))
 		{
 			if (FlxG.keys.anyPressed([W, UP]))
-				SONG.inst.time += timeOffsetSeconds.convert_s_to_ms();
+				FlxG.sound.music.time += timeOffsetSeconds.convert_s_to_ms();
 			if (FlxG.keys.anyPressed([S, DOWN]))
-				SONG.inst.time -= timeOffsetSeconds.convert_s_to_ms();
+				FlxG.sound.music.time -= timeOffsetSeconds.convert_s_to_ms();
 
-			if (SONG.inst.time < 0)
-				SONG.inst.time = 0;
+			if (FlxG.sound.music.time < 0)
+				FlxG.sound.music.time = 0;
 
-			if (SONG.inst.time > SONG.inst.length)
-				SONG.inst.time = SONG.inst.length;
+			if (FlxG.sound.music.time > FlxG.sound.music.length)
+				FlxG.sound.music.time = FlxG.sound.music.length;
 		}
 
-		if (FlxG.keys.justPressed.SPACE && !SONG.inst.playing)
+		if (FlxG.keys.justPressed.SPACE && !FlxG.sound.music.playing)
 		{
 			var noteData:NoteData = {};
 
 			if (SONG.data.timeformat == MILLISECONDS)
 			{
-				noteData.ms = SONG.inst.time;
+				noteData.ms = FlxG.sound.music.time;
 
-				noteData.notes = ['Seconds: ${SONG.inst.time.convert_ms_to_s()}'];
+				noteData.notes = ['Seconds: ${FlxG.sound.music.time.convert_ms_to_s()}'];
 			}
 			if (SONG.data.timeformat == STEPS)
 			{
