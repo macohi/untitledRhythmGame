@@ -1,5 +1,6 @@
 package urg;
 
+import haxe.Json;
 import flixel.tweens.FlxEase;
 import flixel.tweens.FlxTween;
 import flixel.util.FlxColor;
@@ -37,7 +38,7 @@ class PlayState extends MusicBeatState
 
 		#if debug
 		#if hscript
-		ConsoleUtil.registerObject('SONG', SONG);
+		ConsoleUtil.registerObject('SONG', Json.stringify(SONG));
 		#end
 		#end
 
@@ -75,12 +76,15 @@ class PlayState extends MusicBeatState
 	{
 		if (FlxG.keys.justReleased.SPACE)
 		{
-			var noteData:NoteData = {
-				ms: FlxG.sound.music.time,
+			var noteData:NoteData = {};
 
-				beat: curBeat,
-				step: curStep,
-			};
+			if (SONG.timeformat == MILLISECONDS)
+				noteData.ms = FlxG.sound.music.time;
+			if (SONG.timeformat == BEATS_AND_STEPS)
+			{
+				noteData.beat = curBeat;
+				noteData.step = curStep;
+			}
 
 			trace('Added note: $noteData');
 
