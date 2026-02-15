@@ -38,7 +38,10 @@ class PlayState extends MusicBeatState
 
 		#if debug
 		#if hscript
-		ConsoleUtil.registerObject('SONG', Json.stringify(SONG));
+		ConsoleUtil.registerObject('SONG', SONG);
+		ConsoleUtil.registerFunction('traceSONG', function() {
+			trace(Json.stringify(SONG, '\t'));
+		});
 		#end
 		#end
 

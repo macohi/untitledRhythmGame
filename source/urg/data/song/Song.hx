@@ -6,9 +6,12 @@ class Song
 	{
 		var songData:SongData = {
 			bpm: 100,
+			timeformat: MILLISECONDS,
 			notes: [],
-			timeformat: MILLISECONDS
 		};
+
+		if (song == 'test')
+			songData.timeformat = BEATS_AND_STEPS;
 
 		return songData;
 	}
