@@ -25,7 +25,7 @@ class PlayState extends MusicBeatState
 
 	public var SONG:SongData;
 
-	public var centerNote:NoteSprite;
+	public var strumNote:NoteSprite;
 
 	override public function create()
 	{
@@ -49,9 +49,10 @@ class PlayState extends MusicBeatState
 		#end
 		#end
 
-		centerNote = new NoteSprite();
-		centerNote.screenCenter();
-		add(centerNote);
+		strumNote = new NoteSprite();
+		strumNote.screenCenter();
+		strumNote.y = 50;
+		add(strumNote);
 
 		songStarted = true;
 
@@ -103,7 +104,7 @@ class PlayState extends MusicBeatState
 
 			SONG.notes.push(noteData);
 
-			FlxTween.color(centerNote, 1, FlxColor.RED, FlxColor.WHITE, {
+			FlxTween.color(strumNote, 1, FlxColor.RED, FlxColor.WHITE, {
 				ease: FlxEase.quadInOut
 			});
 		}
