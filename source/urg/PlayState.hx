@@ -1,5 +1,6 @@
 package urg;
 
+import urg.data.save.URGSave;
 import flixel.group.FlxSpriteGroup.FlxTypedSpriteGroup;
 import flixel.group.FlxGroup.FlxTypedGroup;
 import lime.system.Clipboard;
@@ -37,8 +38,6 @@ class PlayState extends MusicBeatState
 		if (SONG == null)
 			throw 'Where\'s the song?';
 
-		FlxG.sound.playMusic(AssetPaths.music('songs/Test'));
-
 		#if debug
 		#if hscript
 		ConsoleUtil.registerObject('SONG', SONG);
@@ -55,14 +54,15 @@ class PlayState extends MusicBeatState
 
 		strumNote = new NoteSprite(true);
 		strumNote.screenCenter();
-		strumNote.y = 50;
 		add(strumNote);
 
 		notes = new FlxTypedSpriteGroup<NoteSprite>();
 		add(notes);
 
 		loadNotes();
+		updateDownscrollValues();
 
+		FlxG.sound.playMusic(AssetPaths.music('songs/Test'));
 		songStarted = true;
 
 		if (debugMode)
@@ -71,6 +71,16 @@ class PlayState extends MusicBeatState
 		}
 
 		super.create();
+	}
+
+	public function updateDownscrollValues()
+	{
+		var isDownscroll = URGSave.instance.downscroll.get();
+
+		strumNote.y = 50;
+		
+		if (isDownscroll)
+			strumNote.y = FlxG.height - strumNote.height - strumNote.y;
 	}
 
 	public function reloadNotes()
@@ -129,10 +139,18 @@ class PlayState extends MusicBeatState
 				continue;
 			}
 
+			var YOffset:Float = 0;
+
 			if (SONG.timeformat == MILLISECONDS)
-				note.y = strumNote.y + ((Conductor.songPosition - note.data.ms));
+				YOffset = ((Conductor.songPosition - note.data.ms));
 			if (SONG.timeformat == STEPS)
-				note.y = strumNote.y + ((curStep - note.data.step) * note.height);
+				YOffset = ((curStep - note.data.step) * note.height);
+
+			// + actually goes down in flixel lol
+			if (!URGSave.instance.downscroll.get())
+				YOffset = -YOffset;
+
+			note.y = strumNote.y + YOffset;
 
 			if (debugMode)
 			{
@@ -153,6 +171,12 @@ class PlayState extends MusicBeatState
 
 	public function debugModeFunctions()
 	{
+		if (FlxG.keys.justReleased.ENTER)
+		{
+			URGSave.instance.downscroll.set(!URGSave.instance.downscroll.get());
+			updateDownscrollValues();
+		}
+
 		if (FlxG.keys.justReleased.ENTER)
 		{
 			if (FlxG.sound.music.playing)
